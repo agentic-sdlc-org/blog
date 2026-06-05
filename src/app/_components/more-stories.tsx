@@ -8,10 +8,14 @@ type Props = {
 export function MoreStories({ posts }: Props) {
   return (
     <section>
-      <h2 className="mb-8 text-5xl md:text-7xl font-bold tracking-tighter leading-tight">
-        More Stories
+      <h2
+        className="text-xs font-semibold uppercase tracking-widest mb-6"
+        style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-sans)' }}
+      >
+        Recent Essays
+        <span className="inline-block ml-2">→</span>
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 mb-32">
         {posts.map((post) => (
           <PostPreview
             key={post.slug}

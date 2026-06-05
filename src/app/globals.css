@@ -1,3 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-cream: #fdfaf7;
+  --color-black: #000000;
+  --color-ink: #111111;
+  --color-body: #2d2d2d;
+  --color-muted: #6b6b6b;
+  --color-border: #e5e0d8;
+  --color-accent: #c8f0ee;
+  --font-serif: 'Playfair Display', 'Hoefler Text', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: var(--color-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--color-ink);
+}

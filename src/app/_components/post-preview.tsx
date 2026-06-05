@@ -1,6 +1,5 @@
 import { type Author } from "@/interfaces/author";
 import Link from "next/link";
-import Avatar from "./avatar";
 import CoverImage from "./cover-image";
 import DateFormatter from "./date-formatter";
 
@@ -13,29 +12,32 @@ type Props = {
   slug: string;
 };
 
-export function PostPreview({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  author,
-  slug,
-}: Props) {
+export function PostPreview({ title, coverImage, date, excerpt, author, slug }: Props) {
   return (
-    <div>
-      <div className="mb-5">
+    <div className="pb-8" style={{ borderBottom: '1px solid var(--color-border)' }}>
+      <div className="mb-4">
         <CoverImage slug={slug} title={title} src={coverImage} />
       </div>
-      <h3 className="text-3xl mb-3 leading-snug">
+      <h3
+        className="text-xl font-normal leading-snug mb-2"
+        style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-ink)' }}
+      >
         <Link href={`/posts/${slug}`} className="hover:underline">
           {title}
         </Link>
       </h3>
-      <div className="text-lg mb-4">
+      <p className="text-xs mb-3" style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-sans)' }}>
         <DateFormatter dateString={date} />
+      </p>
+      <p className="text-sm leading-relaxed mb-3" style={{ color: 'var(--color-body)', fontFamily: 'var(--font-sans)' }}>
+        {excerpt}
+      </p>
+      <div className="flex items-center gap-2">
+        <img src={author.picture} alt={author.name} className="w-5 h-5 rounded-full" />
+        <span className="text-xs uppercase tracking-widest font-medium" style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-sans)' }}>
+          {author.name}
+        </span>
       </div>
-      <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-      <Avatar name={author.name} picture={author.picture} />
     </div>
   );
 }
