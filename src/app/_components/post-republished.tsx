@@ -1,3 +1,5 @@
+"use client";
+
 type RepublishedLink = {
   label: string;
   url: string;
