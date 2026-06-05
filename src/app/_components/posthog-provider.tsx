@@ -6,7 +6,16 @@ import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
-// PostHog is initialized in instrumentation-client.ts
+if (typeof window !== "undefined" && !posthog.__loaded) {
+  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+    api_host: "/ingest",
+    ui_host: "https://us.posthog.com",
+    defaults: "2026-01-30",
+    capture_pageview: false,
+    capture_pageleave: true,
+    capture_exceptions: true,
+  });
+}
 
 function PostHogPageView() {
   const pathname = usePathname();
