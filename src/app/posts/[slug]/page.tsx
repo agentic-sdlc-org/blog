@@ -8,7 +8,6 @@ import Container from "@/app/_components/container";
 import Header from "@/app/_components/header";
 import { PostBody } from "@/app/_components/post-body";
 import { PostHeader } from "@/app/_components/post-header";
-import { PostRepublished } from "@/app/_components/post-republished";
 import { PostViewTracker } from "@/app/_components/post-view-tracker";
 
 export default async function Post(props: Params) {
@@ -37,9 +36,9 @@ export default async function Post(props: Params) {
             coverImage={post.coverImage}
             date={post.date}
             author={post.author}
+            republishedAt={post.republishedAt}
           />
           <PostBody content={content} />
-          <PostRepublished links={post.republishedAt ?? []} />
         </article>
       </Container>
     </main>
