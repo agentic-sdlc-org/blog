@@ -1,15 +1,15 @@
 import { ImageResponse } from "next/og";
+import { readFileSync } from "fs";
+import { join } from "path";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 export const alt = "Agentic-SDLC.org — Home of the Agentic SDLC Playbook";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
-  const robotUrl = new URL("/assets/robot.png", process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000"
-  ).toString();
+  const robotData = readFileSync(join(process.cwd(), "public/assets/robot.png"));
+  const robotBase64 = `data:image/png;base64,${robotData.toString("base64")}`;
 
   return new ImageResponse(
     (
@@ -25,16 +25,14 @@ export default async function Image() {
           fontFamily: "Georgia, serif",
         }}
       >
-        {/* Robot head */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={robotUrl}
+          src={robotBase64}
           width={160}
           height={160}
           style={{ marginBottom: "36px" }}
         />
 
-        {/* Site name */}
         <div
           style={{
             fontSize: "72px",
@@ -47,7 +45,6 @@ export default async function Image() {
           Agentic-SDLC.org
         </div>
 
-        {/* Accent line */}
         <div
           style={{
             width: "60px",
@@ -57,7 +54,6 @@ export default async function Image() {
           }}
         />
 
-        {/* Tagline */}
         <div
           style={{
             fontSize: "28px",
