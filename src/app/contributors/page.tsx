@@ -10,7 +10,7 @@ export const metadata = {
 export default function ContributorsPage() {
   const posts = getAllPosts();
 
-  // Dedupe authors by name, preserving first occurrence
+  // Dedupe authors by name, then sort alphabetically by last name
   const seen = new Set<string>();
   const contributors = posts
     .map((p) => p.author)
@@ -18,6 +18,10 @@ export default function ContributorsPage() {
       if (seen.has(a.name)) return false;
       seen.add(a.name);
       return true;
+    })
+    .sort((a, b) => {
+      const lastName = (name: string) => name.trim().split(" ").at(-1) ?? "";
+      return lastName(a.name).localeCompare(lastName(b.name));
     });
 
   return (
