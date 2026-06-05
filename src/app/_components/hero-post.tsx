@@ -1,7 +1,10 @@
+"use client";
+
 import CoverImage from "@/app/_components/cover-image";
 import { type Author } from "@/interfaces/author";
 import Link from "next/link";
 import DateFormatter from "./date-formatter";
+import posthog from "posthog-js";
 
 type Props = {
   title: string;
@@ -25,7 +28,16 @@ export function HeroPost({ title, coverImage, date, excerpt, author, slug }: Pro
             className="text-3xl font-normal leading-snug mb-3"
             style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-ink)' }}
           >
-            <Link href={`/posts/${slug}`} className="hover:underline">
+            <Link
+              href={`/posts/${slug}`}
+              className="hover:underline"
+              onClick={() =>
+                posthog.capture("hero_post_clicked", {
+                  post_title: title,
+                  post_slug: slug,
+                })
+              }
+            >
               {title}
             </Link>
           </h3>

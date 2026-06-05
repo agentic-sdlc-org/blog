@@ -6,13 +6,7 @@ import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
-if (typeof window !== "undefined") {
-  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
-    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-    capture_pageview: false, // we capture manually below
-    capture_pageleave: true,
-  });
-}
+// PostHog is initialized in instrumentation-client.ts
 
 function PostHogPageView() {
   const pathname = usePathname();

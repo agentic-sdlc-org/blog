@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import posthog from "posthog-js";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -37,7 +38,10 @@ export function NavDrawer() {
     <>
       {/* Hamburger button */}
       <button
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setOpen(true);
+          posthog.capture("nav_drawer_opened");
+        }}
         aria-label="Open menu"
         className="flex flex-col justify-center gap-1.5 w-8 h-8 cursor-pointer"
       >
@@ -80,7 +84,13 @@ export function NavDrawer() {
             <Link
               key={link.href}
               href={link.href}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+                posthog.capture("nav_link_clicked", {
+                  link_label: link.label,
+                  link_href: link.href,
+                });
+              }}
               className="px-5 py-3 text-sm text-white hover:text-white/70 transition-colors"
               style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}
             >
@@ -106,6 +116,12 @@ export function NavDrawer() {
                 rel="noopener noreferrer"
                 aria-label={s.label}
                 className="text-white hover:text-white/60 transition-colors"
+                onClick={() =>
+                  posthog.capture("social_link_clicked", {
+                    platform: s.label,
+                    href: s.href,
+                  })
+                }
               >
                 {s.icon}
               </a>
