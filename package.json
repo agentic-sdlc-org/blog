@@ -10,6 +10,7 @@
     "date-fns": "^3.6.0",
     "gray-matter": "^4.0.3",
     "next": "latest",
+    "posthog-js": "^1.380.1",
     "react": "^19",
     "react-dom": "^19",
     "remark": "^15.0.1",

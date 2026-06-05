@@ -1,10 +1,11 @@
 import Footer from "@/app/_components/footer";
-import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
+import { PostHogProvider } from "@/app/_components/posthog-provider";
+import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: `Blog`,
+  title: `Agentic-SDLC.org`,
   description: `A statically generated blog using Next.js.`,
   openGraph: {
     images: [HOME_OG_IMAGE_URL],
@@ -22,8 +23,10 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body>
-        <div className="min-h-screen">{children}</div>
-        <Footer />
+        <PostHogProvider>
+          <div className="min-h-screen">{children}</div>
+          <Footer />
+        </PostHogProvider>
       </body>
     </html>
   );
