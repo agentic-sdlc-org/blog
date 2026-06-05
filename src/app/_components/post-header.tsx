@@ -1,5 +1,6 @@
 "use client";
 
+import { type JSX } from "react";
 import CoverImage from "./cover-image";
 import DateFormatter from "./date-formatter";
 import { type Author } from "@/interfaces/author";
