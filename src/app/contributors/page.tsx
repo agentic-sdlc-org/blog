@@ -46,7 +46,12 @@ export default function ContributorsPage() {
           {/* Grid */}
           <div className="contributors-grid">
             {contributors.map((author) => (
-              <div key={author.name} className="contributor-card">
+              <Link
+                key={author.name}
+                href={`/posts?author=${encodeURIComponent(author.name)}`}
+                className="contributor-card"
+                style={{ display: "block", textDecoration: "none" }}
+              >
                 {/* Portrait */}
                 <div
                   style={{
@@ -97,7 +102,7 @@ export default function ContributorsPage() {
                   {posts.filter((p) => p.author.name === author.name).length}{" "}
                   {posts.filter((p) => p.author.name === author.name).length === 1 ? "post" : "posts"}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -116,7 +121,12 @@ export default function ContributorsPage() {
           .contributors-grid { grid-template-columns: repeat(4, 1fr); }
         }
         .contributor-card {
-          cursor: default;
+          cursor: pointer;
+          opacity: 1;
+          transition: opacity 0.2s ease;
+        }
+        .contributor-card:hover {
+          opacity: 0.75;
         }
       `}</style>
     </main>
