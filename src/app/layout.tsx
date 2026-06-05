@@ -5,8 +5,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.agentic-sdlc.org"),
   title: `Agentic-SDLC.org`,
-  description: `A statically generated blog using Next.js.`,
+  description: `Journaling the journey to agentic software development — the challenges, the wins, and the patterns that work.`,
   openGraph: {
     images: [HOME_OG_IMAGE_URL],
   },
