@@ -9,13 +9,6 @@ export function Intro() {
       <div className="flex items-center justify-between py-3 text-sm" style={{ fontFamily: 'var(--font-sans)' }}>
         <NavDrawer />
         <div />
-        <a
-          href="#"
-          className="border border-white text-white text-xs font-medium px-4 py-1.5 hover:bg-white hover:text-black transition-colors"
-          style={{ fontFamily: 'var(--font-sans)' }}
-        >
-          Subscribe
-        </a>
       </div>
 
       {/* Logo with robot + wordmark */}

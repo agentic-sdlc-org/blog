@@ -7,18 +7,6 @@ const Header = () => {
       <div className="flex items-center justify-between py-3">
         <NavDrawer />
         <div />
-        <a
-          href="#"
-          className="border text-xs font-medium px-4 py-1.5 transition-colors hover:bg-black hover:text-white"
-          style={{
-            borderColor: 'var(--color-ink)',
-            color: 'var(--color-ink)',
-            fontFamily: 'var(--font-sans)',
-            backgroundColor: 'var(--color-accent)',
-          }}
-        >
-          Subscribe
-        </a>
       </div>
       <div className="flex items-center py-3">
         <div className="flex-1 h-px" style={{ backgroundColor: 'var(--color-border)' }} />
