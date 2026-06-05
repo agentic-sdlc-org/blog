@@ -1,15 +1,12 @@
 import Link from "next/link";
+import { NavDrawer } from "./nav-drawer";
 
 export function Intro() {
   return (
     <div className="bg-black text-white -mx-5 px-5 mb-12">
       {/* Top nav */}
       <div className="flex items-center justify-between py-3 text-sm" style={{ fontFamily: 'var(--font-sans)' }}>
-        <div className="w-8 h-8 flex flex-col justify-center gap-1.5 cursor-pointer">
-          <span className="block w-5 h-px bg-white" />
-          <span className="block w-5 h-px bg-white" />
-          <span className="block w-5 h-px bg-white" />
-        </div>
+        <NavDrawer />
         <div />
         <a
           href="#"

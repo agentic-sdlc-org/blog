@@ -1,14 +1,11 @@
 import Link from "next/link";
+import { NavDrawer } from "./nav-drawer";
 
 const Header = () => {
   return (
     <div className="-mx-5 px-5 mb-10" style={{ borderBottom: '1px solid var(--color-border)' }}>
       <div className="flex items-center justify-between py-3">
-        <div className="w-8 h-8 flex flex-col justify-center gap-1.5 cursor-pointer">
-          <span className="block w-5 h-px" style={{ backgroundColor: 'var(--color-ink)' }} />
-          <span className="block w-5 h-px" style={{ backgroundColor: 'var(--color-ink)' }} />
-          <span className="block w-5 h-px" style={{ backgroundColor: 'var(--color-ink)' }} />
-        </div>
+        <NavDrawer />
         <div />
         <a
           href="#"
