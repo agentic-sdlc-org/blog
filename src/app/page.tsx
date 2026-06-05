@@ -171,7 +171,7 @@ export default function Index() {
             </p>
           </div>
           <a
-            href="#"
+            href="/playbook"
             style={{
               fontFamily: "var(--font-sans)",
               fontSize: "0.8rem",

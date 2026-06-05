@@ -6,6 +6,7 @@ import posthog from "posthog-js";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
+  { label: "Playbook", href: "/playbook" },
   { label: "Posts", href: "/posts" },
   { label: "Contributors", href: "/contributors" },
 ];
