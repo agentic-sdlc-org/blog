@@ -27,7 +27,7 @@ const Header = () => {
             className="text-3xl md:text-4xl font-normal tracking-widest"
             style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-ink)' }}
           >
-            BLOG
+            Agentic-SDLC.org
           </span>
         </Link>
         <div className="flex-1 h-px" style={{ backgroundColor: 'var(--color-border)' }} />

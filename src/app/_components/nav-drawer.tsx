@@ -121,7 +121,7 @@ export function NavDrawer() {
             className="text-xl font-normal tracking-widest text-white"
             style={{ fontFamily: "var(--font-serif)" }}
           >
-            BLOG
+            Agentic-SDLC.org
           </Link>
         </div>
       </div>
