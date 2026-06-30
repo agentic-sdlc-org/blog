@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
 import markdownToHtml from "@/lib/markdownToHtml";
-import Alert from "@/app/_components/alert";
 import Container from "@/app/_components/container";
 import Header from "@/app/_components/header";
 import { PostBody } from "@/app/_components/post-body";
@@ -26,8 +25,7 @@ export default async function Post(props: Params) {
         post_slug={params.slug}
         post_author={post.author.name}
       />
-      <Alert preview={post.preview} />
-      <Container>
+<Container>
         <Header />
         <article className="mb-32">
           <PostHeader
