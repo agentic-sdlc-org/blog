@@ -1,0 +1,33 @@
+# Agentic-SDLC.org
+
+> A journal and open-source playbook for engineering organizations navigating the age of AI coding agents. Written by practitioners, for practitioners — covering the organizational, process, and cultural dimensions of agentic software development.
+
+## About
+
+Agentic-SDLC.org documents one organization's real-world journey redefining software engineering for the age of agents. The site combines firsthand essays with an evergreen playbook covering patterns, pitfalls, and practices from the field.
+
+**Audience:** CTOs, engineering leaders, and senior engineers building or managing teams that use AI coding agents in production.
+
+**Core thesis:** The bottleneck in agentic software development has moved from writing code to providing context. Engineering performance in the agentic age is determined by the quality of documentation, specifications, and structured intent that feeds AI systems — not by the capabilities of the agents themselves.
+
+## Posts
+
+- [Your Code Is Only as Good as Your Context](https://agentic-sdlc.org/posts/context-pipeline) — Part 1 of 3: Context Pipeline. The next phase of engineering productivity will be won by the team with the best context feeding the system. Documentation stops being overhead and becomes part of the engineering execution system itself.
+
+- [The Context Pipeline](https://agentic-sdlc.org/posts/context-pipeline-2) — Part 2 of 3: Context Pipeline. The chain of artifacts that turns business intent into executable work: PRD → Specification → Architecture Plan → Epic → User Story → Ticket. What each layer's job is, and what good looks like.
+
+- [Context Debt Is the New Technical Debt](https://agentic-sdlc.org/posts/context-pipeline-3) — Part 3 of 3: Context Pipeline. Every organization runs two decision systems — the official one and the real one. Agents execute against the gap between them. How CTOs should think about owning, measuring, and paying down context debt.
+
+- [What the AI Hype Cycle Gets Wrong About Engineering Culture](https://agentic-sdlc.org/posts/ai-hype-cycle) — 84% of organizations haven't redesigned jobs or workflows around AI. The tools aren't the problem. The missing ingredient is process change, not better tooling.
+
+- [The AI Shift](https://agentic-sdlc.org/posts/the-ai-shift) — Software engineering is changing fast — but probably not in the ways you expect. The code looks the same. The job doesn't.
+
+- [Where Do Senior Engineers Come From When Junior Engineers Disappear?](https://agentic-sdlc.org/posts/jr-engineer) — AI is absorbing the struggle that builds senior engineers. What happens to the pipeline when the debugging loops, undocumented decisions, and systems-understanding work disappears?
+
+- [When Nobody Wrote It, Who Owns It?](https://agentic-sdlc.org/posts/nobody-wrote-it) — The "you wrote it, you own it" model breaks down when AI is the author. Accountability diffuses slowly — until something breaks and nobody can say who made the call.
+
+- [AI Made Simple](https://agentic-sdlc.org/posts/ai-made-simple) — A practitioner's honest account of following the frameworks, reading the books, and still being uncertain about what was actually built.
+
+## Playbook
+
+The [Agentic SDLC Playbook](https://agentic-sdlc.org/playbook) is a living, open-source guide to building software in the age of agents — patterns, pitfalls, and practices from the field.
