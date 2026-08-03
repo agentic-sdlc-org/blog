@@ -40,13 +40,26 @@ A trimmed template:
 
 ```md
 # Provenance — {{FUNCTION}}
-## 1. Vision — What & Why
-### What it is · Why we built it · Vocabulary · Design patterns · Known flaws
+## 1. Summary
+### Vision — for what is supposed to be
+### What it is today
+### Why we built it · 
+### Vocabulary · 
+### Design patterns · 
+### Known flaws
 ## 2. Sources
 ### 2.1 External (EXT)   - EXT-01 — {{title}} · url · why
 ### 2.2 Internal (INT)   - INT-01 — {{title}} · url · why · caveats
 ### 2.3 Code (SRC)       - SRC-01 — {{repo · path · why this entry point}}
 ```
+
+> [!TIP]
+> **Don't know where to start with the Provenance.md?**
+> 1. **Start with the sources.** Enumerate every one you can find, with a line on what each is.
+> 2. **Let an agent pre-review them.** Sanity-check coverage and draft a preliminary summary.
+> 3. **Apply your judgment, then circulate** to informed stakeholders to tighten the summary.
+>
+> Don't proceed until the provenance is buttoned up — it should be correct and crisp.  Also, it should be high-level, the summary should be no more than a page.
 
 ## Step 2 — Run the skill reference generator
 
