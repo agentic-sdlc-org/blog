@@ -113,13 +113,3 @@ Our `create-verusen-jira-ticket` skill knows the field IDs, the checklist format
 Our merge-request skills are the same: they carry the standard, not the act.
 
 Meanwhile, our CI code-review pipeline is a standalone agent: it triggers on a merge request, runs its own loop, and *loads those same standards skills* to do the review. And when we ask Claude Code to take on something sprawling, it fans the work out to in-session subagents, each in its own context, each free to load whatever skill its slice of the job needs.
-
-## The end of the argument (I hope)
-
-The next time the argument starts (and it will, because someone new always joins and someone old always forgets), we don't have to relitigate it from scratch. We have a shared question now, and it's short enough to fit in the five minutes at the end of a standup:
-
-*Does it have a pulse?*
-
-If it runs, it's an agent. If it's something an agent knows, it's a skill. And if it seems to want to be both, you've just found a seam (an agent on one side, a skill on the other).
-
-We took the trip so we'd stop having the argument. But what we actually got was better: a way to design.
