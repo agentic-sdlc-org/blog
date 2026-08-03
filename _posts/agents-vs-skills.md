@@ -92,7 +92,7 @@ And once you see it that way, they stop competing and start composing. Agents ru
 
 ## Our definition
 
-So here's what we're bringing home from the trip: the definition we'll build the agentic SDLC on.
+So here's what we're bringing home from the trip:
 
 > A **skill** is a packaged, on-demand unit of our know-how: a repeatable procedure plus exactly the context needed to run it, that any actor can load when a task calls for it. It has no loop and no life of its own. It is *known*, not *run*.
 >
@@ -104,16 +104,22 @@ And the heuristic that falls out of it, the one we'll actually use at the fork i
 - Does the thing need to be **known and reused** across many different actors and situations? That's a **skill**.
 - If you catch yourself wanting to give one thing *both* a loop *and* a fixed body of expertise: stop. You don't have one blurry thing. You have an agent that should be **loading a skill**. Split them, and both get simpler.
 
-You can see the whole model in what we've already built. Our `create-verusen-jira-ticket` skill knows the field IDs, the checklist format, the house rules for a well-formed ticket, and it does absolutely nothing until a Claude session picks it up and runs the ticket creation. Pure knowledge, no pulse. Our merge-request skills are the same: they carry the standard, not the act. Meanwhile, our CI code-review pipeline is a standalone agent: it triggers on a merge request, runs its own loop, and *loads those same standards skills* to do the review. And when we ask Claude Code to take on something sprawling, it fans the work out to in-session subagents, each in its own context, each free to load whatever skill its slice of the job needs.
+## Some examples we have today
 
-Same two building blocks, arranged three different ways. A worker with a pulse, a body of knowledge without one, and the good sense to keep them separate so they can be combined.
+You can see the whole model in what we've already built.
 
-## Back at the standup
+Our `create-verusen-jira-ticket` skill knows the field IDs, the checklist format, the house rules for a well-formed ticket, and it does absolutely nothing until a Claude session picks it up and runs the ticket creation. Pure knowledge, no pulse.
+
+Our merge-request skills are the same: they carry the standard, not the act.
+
+Meanwhile, our CI code-review pipeline is a standalone agent: it triggers on a merge request, runs its own loop, and *loads those same standards skills* to do the review. And when we ask Claude Code to take on something sprawling, it fans the work out to in-session subagents, each in its own context, each free to load whatever skill its slice of the job needs.
+
+## The end of the argument (I hope)
 
 The next time the argument starts (and it will, because someone new always joins and someone old always forgets), we don't have to relitigate it from scratch. We have a shared question now, and it's short enough to fit in the five minutes at the end of a standup:
 
 *Does it have a pulse?*
 
-If it runs, it's an agent. If it's something an agent knows, it's a skill. And if it seems to want to be both, you've just found a seam (an agent on one side, a skill on the other) and your architecture got a little cleaner the moment you saw it.
+If it runs, it's an agent. If it's something an agent knows, it's a skill. And if it seems to want to be both, you've just found a seam (an agent on one side, a skill on the other).
 
-We took the trip so we'd stop having the argument. What we actually got was better: a way to design. Turns out the fastest way to end a debate about definitions is to go find the real one together.
+We took the trip so we'd stop having the argument. But what we actually got was better: a way to design.
