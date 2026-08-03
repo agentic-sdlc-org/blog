@@ -17,7 +17,7 @@ We are good at this argument. We have had it many times. We have never once fini
 That would be fine if the two words were decoration. They are not. We are building an entire agentic SDLC on top of them: ticketing, code review, standards enforcement, whole pipelines.
 And every time we design a new piece of it, the same fork in the road shows up: *is this thing we're about to build a skill, or an agent?* And every time, we discover we still don't share an answer. We've been pouring concrete on top of a word we haven't defined.
 
-So instead of having the argument a tenth time, I want to do something different. I want to take a trip, and I want you to come with me. We'll go ask Anthropic what these words mean, because these are their tools. We'll go ask the rest of the industry, because they use the same words to mean slightly different things and that's half our problem. We'll take each tool apart to see what it actually does and how you make one. We'll catalog the different shapes they come in. And then, at the end of the road, we'll try to come back with a single definition — ours — that we can hang the agentic SDLC on without wincing.
+So instead of having the argument a tenth time, I want to do something different. I want to take a trip, and I want you to come with me. We'll go ask Anthropic what these words mean, because these are their tools. We'll go ask the rest of the industry, because they use the same words to mean slightly different things and that's half our problem. We'll take each tool apart to see what it actually does and how you make one. We'll catalog the different shapes they come in. And then, at the end of the road, we'll try to come back with a single definition (ours) that we can hang the agentic SDLC on without wincing.
 
 Grab a coffee. It's not a long trip, but it goes somewhere.
 
@@ -31,11 +31,11 @@ The clever part is *how* it gets used. Claude doesn't read the whole folder all 
 
 An **Agent** is a different kind of animal, and Anthropic is careful about the word. In their writing on building effective agents, they start by saying that an agent is most often confused with a workflow. From the outside the two look alike: both use a model, both get work done. The difference is who holds the steering wheel.
 
-In a workflow, you hold it. You wire the steps together in code — first this, then that, then this — and the model just fills in the blanks at each step. The path was decided before the run ever started; the model never chooses the route.
+In a workflow, you hold it. You wire the steps together in code (first this, then that, then this) and the model just fills in the blanks at each step. The path was decided before the run ever started. The model never chooses the route.
 
-In an agent, the model holds the wheel. You hand it a goal and a set of tools, and it decides what to do next: which tool to call, what to try when that doesn't work, and when the job is done. Under the hood it runs a loop — look at the situation, decide, act, look at the result, decide again — and it keeps going until the work is finished or you stop it.
+In an agent, the model holds the wheel. You hand it a goal and a set of tools, and it decides what to do next: which tool to call, what to try when that doesn't work, and when the job is done. Under the hood it runs a loop (look at the situation, decide, act, look at the result, decide again) and it keeps going until the work is finished or you stop it.
 
-Two definitions, and already the shape of the difference is peeking through. **A skill is a *thing you wrote down***. **An agent is a *thing that runs***. Hold onto that — we'll come back to it, and it'll turn out to be the whole story.
+Two definitions, and already the shape of the difference is peeking through. **A skill is a *thing you wrote down***. **An agent is a *thing that runs***. Hold onto that. We'll come back to it, and it'll turn out to be the whole story.
 
 ## Second stop: what the rest of the industry means
 
@@ -45,9 +45,9 @@ Ask the broader industry "what is an agent?" and you'll get a version everyone r
 
 Now ask the industry "what is a skill?" and the ground gets soft. For a lot of people, "skill" just means "a thing the model can do" (a synonym for a tool, or a function, or a plugin). Alexa has "skills." Some frameworks call any registered capability a skill. In that loose usage, a skill is basically *an action*.
 
-And there's our confusion, named at last. If you walked in believing "skill = an action the model can take," then of course you can't tell it apart from an agent — because taking actions is exactly what agents do. The two words collapse into each other. But Anthropic's Skills aren't actions at all. They're *knowledge*. They're the instructions and context that shape how an actor behaves, not the acting itself. The industry's fuzziest word and Anthropic's most concrete artifact happen to share a spelling, and we've been paying the tax on that coincidence in every one of those conversations since.
+And there's our confusion, named at last. If you walked in believing "skill = an action the model can take," then of course you can't tell it apart from an agent, because taking actions is exactly what agents do. The two words collapse into each other. But Anthropic's Skills aren't actions at all. They're *knowledge*. They're the instructions and context that shape how an actor behaves, not the acting itself. The industry's fuzziest word and Anthropic's most concrete artifact happen to share a spelling, and we've been paying the tax on that coincidence in every one of those conversations since.
 
-So we correct course, and travel on with the sharper version: **a skill is packaged knowledge; an agent is an actor that runs.**
+So we correct course, and travel on with the sharper version: **a skill is packaged knowledge. An agent is an actor that runs.**
 
 ## Taking them apart: how you actually make one
 
@@ -86,34 +86,34 @@ Here's the sentence I wish I'd had at the start of every argument:
 
 **An agent has a pulse. A skill doesn't.**
 
-An agent owns a context window and a loop; it perceives, decides, and acts, and it keeps going on its own. A skill has neither. It activates *inside* whoever is holding the context (an agent, or a human's Claude Code session) and shapes what they do, then goes quiet. Agents *do*. Skills are *known*. Everything else (the folders, the SDK, the two runtime types, the progressive disclosure) is detail hanging off that one distinction.
+An agent owns a context window and a loop. It perceives, decides, and acts, and it keeps going on its own. A skill has neither. It activates *inside* whoever is holding the context (an agent, or a human's Claude Code session) and shapes what they do, then goes quiet. Agents *do*. Skills are *known*. Everything else (the folders, the SDK, the two runtime types, the progressive disclosure) is detail hanging off that one distinction.
 
 And once you see it that way, they stop competing and start composing. Agents run, skills ride along. The most powerful pattern we have isn't "agent *or* skill". It's an agent that loads the right skill at the right moment. The worker with the pulse, reaching for the packaged expertise it needs, exactly when the task calls for it.
 
 ## Our definition
 
-So here's what we're bringing home from the trip — the definition we'll build the agentic SDLC on.
+So here's what we're bringing home from the trip: the definition we'll build the agentic SDLC on.
 
 > A **skill** is a packaged, on-demand unit of our know-how: a repeatable procedure plus exactly the context needed to run it, that any actor can load when a task calls for it. It has no loop and no life of its own. It is *known*, not *run*.
 >
-> An **agent** is a worker that owns a context window and an execution loop. It decides, uses tools, and acts on its own — and it can load skills as it goes. It comes in two forms: **in-session subagents** we spawn to divide and conquer inside a session, and **standalone agents** we deploy to run without us.
+> An **agent** is a worker that owns a context window and an execution loop. It decides, uses tools, and acts on its own, and it can load skills as it goes. It comes in two forms: **in-session subagents** we spawn to divide and conquer inside a session, and **standalone agents** we deploy to run without us.
 
 And the heuristic that falls out of it, the one we'll actually use at the fork in the road:
 
-- Does the thing need to **decide and act on its own**? That's an **agent**. If it runs while nobody's watching, it's a standalone one; if it's helping an orchestrator get through a bigger job, it's a subagent.
+- Does the thing need to **decide and act on its own**? That's an **agent**. If it runs while nobody's watching, it's a standalone one. If it's helping an orchestrator get through a bigger job, it's a subagent.
 - Does the thing need to be **known and reused** across many different actors and situations? That's a **skill**.
-- If you catch yourself wanting to give one thing *both* a loop *and* a fixed body of expertise — stop. You don't have one blurry thing. You have an agent that should be **loading a skill**. Split them, and both get simpler.
+- If you catch yourself wanting to give one thing *both* a loop *and* a fixed body of expertise: stop. You don't have one blurry thing. You have an agent that should be **loading a skill**. Split them, and both get simpler.
 
-You can see the whole model in what we've already built. Our `create-verusen-jira-ticket` skill knows the field IDs, the checklist format, the house rules for a well-formed ticket — and it does absolutely nothing until a Claude session picks it up and runs the ticket creation. Pure knowledge, no pulse. Our merge-request skills are the same: they carry the standard, not the act. Meanwhile, our CI code-review pipeline is a standalone agent — it triggers on a merge request, runs its own loop, and *loads those same standards skills* to do the review. And when we ask Claude Code to take on something sprawling, it fans the work out to in-session subagents, each in its own context, each free to load whatever skill its slice of the job needs.
+You can see the whole model in what we've already built. Our `create-verusen-jira-ticket` skill knows the field IDs, the checklist format, the house rules for a well-formed ticket, and it does absolutely nothing until a Claude session picks it up and runs the ticket creation. Pure knowledge, no pulse. Our merge-request skills are the same: they carry the standard, not the act. Meanwhile, our CI code-review pipeline is a standalone agent: it triggers on a merge request, runs its own loop, and *loads those same standards skills* to do the review. And when we ask Claude Code to take on something sprawling, it fans the work out to in-session subagents, each in its own context, each free to load whatever skill its slice of the job needs.
 
-Same two building blocks, arranged three different ways. A worker with a pulse; a body of knowledge without one; and the good sense to keep them separate so they can be combined.
+Same two building blocks, arranged three different ways. A worker with a pulse, a body of knowledge without one, and the good sense to keep them separate so they can be combined.
 
 ## Back at the standup
 
-The next time the argument starts — and it will, because someone new always joins and someone old always forgets — we don't have to relitigate it from scratch. We have a shared question now, and it's short enough to fit in the five minutes at the end of a standup:
+The next time the argument starts (and it will, because someone new always joins and someone old always forgets), we don't have to relitigate it from scratch. We have a shared question now, and it's short enough to fit in the five minutes at the end of a standup:
 
 *Does it have a pulse?*
 
-If it runs, it's an agent. If it's something an agent knows, it's a skill. And if it seems to want to be both, you've just found a seam — an agent on one side, a skill on the other — and your architecture got a little cleaner the moment you saw it.
+If it runs, it's an agent. If it's something an agent knows, it's a skill. And if it seems to want to be both, you've just found a seam (an agent on one side, a skill on the other) and your architecture got a little cleaner the moment you saw it.
 
 We took the trip so we'd stop having the argument. What we actually got was better: a way to design. Turns out the fastest way to end a debate about definitions is to go find the real one together.
