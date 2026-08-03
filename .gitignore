@@ -39,3 +39,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env.local
+
+# dropped by the PostHog install wizard (local tooling, not site content or a shared skill)
+.claude/skills/integration-nextjs-app-router/
