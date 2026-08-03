@@ -65,6 +65,8 @@ In Claude Code, the lightest way to spin one up is a Markdown file under `.claud
 
 The heavier way is to build a standalone program on the **Agent SDK**, wiring the loop into your own application so it can run somewhere no human is watching.
 
+There's a bit of history here that makes skills feel inevitable. The first agents were for-loops around a model. Then we handed them tools. Then memory. Then graphs and complex flows. And at every step, all the know-how (the instructions, the conventions, the tribal knowledge about how we do things here) stayed packed inside one single, ever-growing agent file. Skills are the unpacking. They take that monolith and break it out into structured components: named, versioned, and loadable on demand by whoever needs them.
+
 Notice what an agent has that a skill doesn't: a pulse. A context window and a loop. That's the organ the skill is missing, and it turns out to be the organ that matters.
 
 ## The shapes they come in
@@ -89,6 +91,8 @@ Here's the sentence I wish I'd had at the start of every argument:
 An agent owns a context window and a loop. It perceives, decides, and acts, and it keeps going on its own. A skill has neither. It activates *inside* whoever is holding the context (an agent, or a human's Claude Code session) and shapes what they do, then goes quiet. Agents *do*. Skills are *known*. Everything else (the folders, the SDK, the two runtime types, the progressive disclosure) is detail hanging off that one distinction.
 
 And once you see it that way, they stop competing and start composing. Agents run, skills ride along. The most powerful pattern we have isn't "agent *or* skill". It's an agent that loads the right skill at the right moment. The worker with the pulse, reaching for the packaged expertise it needs, exactly when the task calls for it.
+
+And there's one more layer underneath, the one that explains why this pairing works so well. The name of the game with agents is context management. Context is the arbiter of agent performance. Raw window size matters less every month (the newest models keep stretching it), but focus matters more than ever: an agent performs when it holds exactly the right facts, just what the task needs, and *not* what it doesn't. Look at our two building blocks through that lens. A skill injects just-enough knowledge into the window you already have. A subagent spins up a clean window so a noisy subtask doesn't pollute yours. They aren't two separate inventions that happened to ship together. They're two moves in the same game: the right tokens, in the right window, at the right time.
 
 ## Our definition
 
