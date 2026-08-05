@@ -157,6 +157,7 @@ function GalleryCard({ post, aspectRatio }: { post: Post; aspectRatio: number })
               }}
             >
               {post.author?.name}
+              {post.coAuthor ? ` & ${post.coAuthor.name}` : ""}
             </p>
           </div>
         </div> {/* end absolute inner wrapper */}
