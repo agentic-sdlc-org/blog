@@ -41,7 +41,7 @@ This is the fastest and cheapest honesty check you have. Does it reach for the r
 
 And a point worth sitting with: for a lot of knowledge, this is the whole job. A skill you can converse with, that answers correctly and knows its own edges, is already a genuinely useful thing. Not everything needs to become an agent.
 
-## Stop two: share it (the part nobody writes about)
+## Stop two: share it
 
 Here is where most deployment stories go quiet. The skill works on your machine. Your teammate wants it. Now what?
 
