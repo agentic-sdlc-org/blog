@@ -6,6 +6,7 @@ export type Post = {
   date: string;
   coverImage: string;
   author: Author;
+  coAuthor?: Author;
   excerpt: string;
   ogImage: {
     url: string;

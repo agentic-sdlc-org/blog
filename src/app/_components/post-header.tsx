@@ -15,6 +15,7 @@ type Props = {
   coverImage: string;
   date: string;
   author: Author;
+  coAuthor?: Author;
   republishedAt?: RepublishedLink[];
 };
 
@@ -36,7 +37,7 @@ const PLATFORM_ICONS: Record<string, JSX.Element> = {
   ),
 };
 
-export function PostHeader({ title, coverImage, date, author, republishedAt }: Props) {
+export function PostHeader({ title, coverImage, date, author, coAuthor, republishedAt }: Props) {
   return (
     <>
       {/* Full-width cover image */}
@@ -48,13 +49,23 @@ export function PostHeader({ title, coverImage, date, author, republishedAt }: P
       <div className="flex gap-12 mb-8">
         {/* Left: author */}
         <div className="hidden md:block w-48 flex-shrink-0">
-          <img
-            src={author.picture}
-            alt={author.name}
-            className="w-10 h-10 rounded-full mb-3"
-          />
+          <div className="flex mb-3">
+            <img
+              src={author.picture}
+              alt={author.name}
+              className="w-10 h-10 rounded-full"
+            />
+            {coAuthor && (
+              <img
+                src={coAuthor.picture}
+                alt={coAuthor.name}
+                className="w-10 h-10 rounded-full -ml-2"
+              />
+            )}
+          </div>
           <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-sans)' }}>
             BY {author.name}
+            {coAuthor && <> &amp; {coAuthor.name}</>}
           </p>
         </div>
 
@@ -103,9 +114,15 @@ export function PostHeader({ title, coverImage, date, author, republishedAt }: P
 
       {/* Mobile author */}
       <div className="flex items-center gap-3 mb-6 md:hidden">
-        <img src={author.picture} alt={author.name} className="w-8 h-8 rounded-full" />
+        <div className="flex">
+          <img src={author.picture} alt={author.name} className="w-8 h-8 rounded-full" />
+          {coAuthor && (
+            <img src={coAuthor.picture} alt={coAuthor.name} className="w-8 h-8 rounded-full -ml-2" />
+          )}
+        </div>
         <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-sans)' }}>
           {author.name}
+          {coAuthor && <> &amp; {coAuthor.name}</>}
         </span>
         <span className="text-xs" style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-sans)' }}>
           · <DateFormatter dateString={date} />

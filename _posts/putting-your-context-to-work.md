@@ -6,6 +6,9 @@ date: "2026-08-05T09:00:00.000Z"
 author:
   name: Jorge Romera
   picture: "/assets/blog/authors/jorge.jpeg"
+coAuthor:
+  name: Marcus Tewksbury
+  picture: "/assets/blog/authors/marcus.jpeg"
 ogImage:
   url: "/assets/blog/putting-your-context-to-work/cover.png"
 ---
