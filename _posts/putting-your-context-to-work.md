@@ -25,7 +25,7 @@ The first move is almost anticlimactic. You drop a `SKILL.md` into the folder. T
 
 The mistake to avoid here is treating that file as the knowledge. It is not. The knowledge lives in the references, where you trained it. The `SKILL.md` is a front door, and it has exactly three jobs.
 
-**First, identity.** The file opens by saying what this knowledge is about and where it ends. You already wrote this part: it is the one page summary at the top of your provenance. Reuse it. The skill does not need to repeat the knowledge, it needs to name it, the way a book cover tells you what is inside without being the book.
+**First, identity.** The file opens by saying what this knowledge is about and where it ends: the purpose of the domain, the main concepts and their vocabulary, and the boundaries of what it covers. If you already keep a provenance file whose summary says exactly that, reuse it here. The skill does not need to repeat the knowledge, it needs to name it, the way a book cover tells you what is inside without being the book.
 
 **Second, the trigger.** When a model gets a task, it decides which skill to load by reading every skill's description and picking the one that matches. So the description is what makes your skill turn on at the right moment. Write it using the real questions people ask ("why did my bulk job only process 250"), not vague categories ("use this for bulk questions"). The real question routes the request, the vague category misses it. Then write the other half: a short "do not use this for" list, so your skill stays quiet when the question belongs to a neighboring skill. You will not guess every case up front. When the wrong skill fires, you add the case to the list, and the file gets sharper with use.
 
