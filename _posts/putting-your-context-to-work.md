@@ -51,7 +51,7 @@ There are really three ways to hand a skill to a team.
 
 **MCP.** Stand up a server that serves the knowledge as tools. We do this for company coding standards, and for lookup-style knowledge it is great. But the skill's shape gets lost in translation: no progressive disclosure, no role routing, no front door. And you now operate a service, with hosting and auth to match.
 
-**Plugin.** Package the skills (and, as we will see, the agents) into a plugin, list it in a marketplace, and everyone installs it from there. One artifact, versioned, discoverable, and the same in every session.
+**Plugin.** Package everything (skills, agents, MCP servers, slash commands, hooks) into a plugin, list it in a marketplace, and everyone installs it from there. One artifact, versioned, discoverable, and the same in every session.
 
 We went with the plugin, and the reasoning fits in one sentence: it is the easiest to adopt and the most scalable. The marketplace side of it is deliberately boring, and that is a compliment. Adding our plugin definition to the company marketplace was a ten line entry: a name, a description, and a source pointing at the clubhouse repo. (The marketplace itself, how to stand one up and run it, deserves its own piece. Not today.)
 
