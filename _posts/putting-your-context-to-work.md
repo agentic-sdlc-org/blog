@@ -43,7 +43,7 @@ And a point worth sitting with: for a lot of knowledge, this is the whole job. A
 
 ## Stop two: share it
 
-Here is where most deployment stories go quiet. The skill works on your machine. Your teammate wants it. Now what?
+The skill works on your machine. Your teammate wants it. Now what?
 
 We went through this with the clubhouse, and there are really three ways to hand a skill to a team.
 
