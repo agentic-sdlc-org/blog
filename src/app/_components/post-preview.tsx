@@ -12,10 +12,11 @@ type Props = {
   date: string;
   excerpt: string;
   author: Author;
+  coAuthor?: Author;
   slug: string;
 };
 
-export function PostPreview({ title, coverImage, date, excerpt, author, slug }: Props) {
+export function PostPreview({ title, coverImage, date, excerpt, author, coAuthor, slug }: Props) {
   return (
     <div className="pb-8" style={{ borderBottom: '1px solid var(--color-border)' }}>
       <div className="mb-4">
@@ -45,9 +46,15 @@ export function PostPreview({ title, coverImage, date, excerpt, author, slug }: 
         {excerpt}
       </p>
       <div className="flex items-center gap-2">
-        <img src={author.picture} alt={author.name} className="w-5 h-5 rounded-full" />
+        <div className="flex">
+          <img src={author.picture} alt={author.name} className="w-5 h-5 rounded-full" />
+          {coAuthor && (
+            <img src={coAuthor.picture} alt={coAuthor.name} className="w-5 h-5 rounded-full -ml-1" />
+          )}
+        </div>
         <span className="text-xs uppercase tracking-widest font-medium" style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-sans)' }}>
           {author.name}
+          {coAuthor ? ` & ${coAuthor.name}` : ""}
         </span>
       </div>
     </div>

@@ -23,6 +23,7 @@ export function MoreStories({ posts }: Props) {
             coverImage={post.coverImage}
             date={post.date}
             author={post.author}
+            coAuthor={post.coAuthor}
             slug={post.slug}
             excerpt={post.excerpt}
           />

@@ -220,6 +220,7 @@ function CarouselCard({ post }: { post: Post }) {
               }}
             >
               {post.author?.name}
+              {post.coAuthor ? ` & ${post.coAuthor.name}` : ""}
             </p>
           </div>
         </div>
