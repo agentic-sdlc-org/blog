@@ -57,8 +57,6 @@ We went with the plugin, and the reasoning fits in one sentence: it is the easie
 
 The detail that actually sold us is what happens on update. Our plugin is served by reference: the marketplace entry points at the repo, and the repo is the source of truth. So a skill update is a normal merge request. When it merges, you bump the plugin's version number (one line in the manifest, in the same MR), and that is the entire release. Installed copies compare their local version against the repo's, see there is something new, and refresh themselves. No separate artifact to build, no package to publish, no reinstall instructions to broadcast to the team.
 
-There is a quiet consequence in there that we like a lot: the review gate for knowledge is now the same review gate as for code. A skill update gets reviewed, gets merged, and it is out. Git was already your release pipeline, now it releases knowledge too.
-
 ## Stop three: when conversation is not enough, wrap it in an agent
 
 Some work outgrows the conversation. In practice there are two moments that tell you it is time.
