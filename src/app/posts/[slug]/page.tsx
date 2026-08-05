@@ -33,6 +33,7 @@ export default async function Post(props: Params) {
             coverImage={post.coverImage}
             date={post.date}
             author={post.author}
+            coAuthor={post.coAuthor}
             republishedAt={post.republishedAt}
           />
           <PostBody content={content} />
