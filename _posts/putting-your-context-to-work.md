@@ -55,9 +55,9 @@ There are really three ways to hand a skill to a team.
 
 We went with the plugin, and the reasoning fits in one sentence: it is the easiest to adopt and the most scalable. The marketplace side of it is deliberately boring, and that is a compliment. Adding our plugin definition to the company marketplace was a ten line entry: a name, a description, and a source pointing at the clubhouse repo. (The marketplace itself, how to stand one up and run it, deserves its own piece. Not today.)
 
-The detail that actually sold us is what happens on update. Our plugin is served by reference: the marketplace entry points at the repo's `main` branch. So merging to `main` IS the deploy. There is no release step, no version bump ceremony, no reinstall instructions to broadcast. We lived the proof this week: we renamed two of the clubhouse maintenance skills, merged the MR, and every session picked up the new set on its next refresh. Nobody did anything.
+The detail that actually sold us is what happens on update. Our plugin is served by reference: the marketplace entry points at the repo, and the repo is the source of truth. So a skill update is a normal merge request. When it merges, you bump the plugin's version number (one line in the manifest, in the same MR), and that is the entire release. Installed copies compare their local version against the repo's, see there is something new, and refresh themselves. No separate artifact to build, no package to publish, no reinstall instructions to broadcast to the team.
 
-There is a quiet consequence in there that we like a lot: the review gate for knowledge is now the same review gate as for code. A skill update is an MR. It gets reviewed, it gets merged, it is live. Git was already your release pipeline, now it releases knowledge too.
+There is a quiet consequence in there that we like a lot: the review gate for knowledge is now the same review gate as for code. A skill update gets reviewed, gets merged, and it is out. Git was already your release pipeline, now it releases knowledge too.
 
 ## Stop three: when conversation is not enough, wrap it in an agent
 
