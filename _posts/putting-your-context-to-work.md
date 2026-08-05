@@ -65,7 +65,7 @@ The first is isolation. You want a request to run clean: no residue from earlier
 
 Both of those want an agent, and here is the punchline we set up in [Agents vs Skills](/posts/agents-vs-skills): the upgrade is almost embarrassingly thin. A skill is packaged knowledge. An agent is a pulse (a context window and a loop) wrapped around it. So the wrapper is a few lines of markdown in an `agents/` folder. Ours looks like this: a name, a description that says what to delegate to it, and one frontmatter line, `skills: [bulk-actions]`. That line is the glue. Whenever the worker runs, the hub auto-loads. We rebuilt nothing. The knowledge, the references, the when-to and when-not-to were already there.
 
-Now, the honest questions that come with the mirrored pair.
+**The honest questions that come with the mirrored pair**
 
 Once the plugin ships both a bulk-actions skill and a bulk-actions agent, how does an invoking agent know which to use? The same way everything else routes: by description. The skill's description says load me when you need to *know* something about this domain. The agent's says delegate to me when you need this domain's work *done* end to end, in its own window. It is the pulse test from the last post, operationalized: pull the knowledge into your window, or hand the work to a pulse of its own. Write both descriptions with that split in mind and the router does the rest.
 
