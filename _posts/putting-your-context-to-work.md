@@ -45,7 +45,7 @@ And a point worth sitting with: for a lot of knowledge, this is the whole job. A
 
 The skill works on your machine. Your teammate wants it. Now what?
 
-We went through this with the clubhouse, and there are really three ways to hand a skill to a team.
+There are really three ways to hand a skill to a team.
 
 **Direct.** Copy the folder, or have everyone clone the repo and point their sessions at it. It works on day one. By day thirty there are five copies in five states and nobody knows which one is current. Distribution by diffusion.
 
