@@ -4,11 +4,11 @@ excerpt: "You built the reactor: a trained context that is correct, complete, an
 coverImage: "/assets/blog/putting-your-context-to-work/cover.png"
 date: "2026-08-05T09:00:00.000Z"
 author:
-  name: Jorge Romera
-  picture: "/assets/blog/authors/jorge.jpeg"
-coAuthor:
   name: Marcus Tewksbury
   picture: "/assets/blog/authors/marcus.jpeg"
+coAuthor:
+  name: Jorge Romera
+  picture: "/assets/blog/authors/jorge.jpeg"
 ogImage:
   url: "/assets/blog/putting-your-context-to-work/cover.png"
 ---
@@ -17,7 +17,7 @@ There is a strangely quiet moment at the end of context training. If you followe
 
 And then you look at what you actually have. A folder. On your laptop. The most carefully curated body of knowledge your team owns, and its current deployment model is that people can ask *you* about it.
 
-We hit that moment with our bulk-actions equipment a few weeks ago. The context was trained, the references were solid, the evals passed. And it was inert. Knowledge that is true, current, and hard-won, sitting in a directory, doing nothing. This post is about the other half of the job: the road from that folder to something your whole team, and your agents, actually run. The road has three stops, and the good news is that every one of them is short.
+Now imagine your version of that moment. The loop has run its course on one of your domains: context trained, references solid, evals green. And the result is inert. Knowledge that is true, current, and hard-won, sitting in a directory, doing nothing. We are not fully there ourselves yet (our bulk-actions equipment is still getting tweaks and training passes), but the question already stares at us every day. This post is about the other half of the job: the road from that folder to something your whole team, and your agents, actually run. The road has three stops, and the good news is that every one of them is short.
 
 ## Stop one: give it a front door
 
