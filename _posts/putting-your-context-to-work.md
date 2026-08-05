@@ -57,9 +57,9 @@ We went with the plugin, and the reasoning fits in one sentence: it is the easie
 
 The detail that actually sold us is what happens on update. Our plugin is served by reference: the marketplace entry points at the repo, and the repo is the source of truth. So a skill update is a normal merge request. When it merges, you bump the plugin's version number (one line in the manifest, in the same MR), and that is the entire release. Installed copies compare their local version against the repo's, see there is something new, and refresh themselves. No separate artifact to build, no package to publish, no reinstall instructions to broadcast to the team.
 
-## Stop three: when conversation is not enough, wrap it in an agent
+## Stop three: when the skill alone is not enough, wrap it in an agent
 
-Some work outgrows the conversation. In practice there are two moments that tell you it is time.
+Some work outgrows using the skill inside your own session. In practice there are two moments that tell you it is time.
 
 The first is isolation. You want a request to run clean: no residue from earlier calls, no accumulated conversation bending the answer, a fresh window that sees only the skill and the task. The second is parallelism. Some jobs want to be fanned out and run at the same time, not queued through one chat.
 
