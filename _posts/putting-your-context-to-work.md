@@ -27,7 +27,9 @@ The mistake to avoid here is treating that file as the knowledge. It is not. The
 
 **First, identity.** The file opens by saying what this knowledge is about and where it ends: the purpose of the domain, the main concepts and their vocabulary, and the boundaries of what it covers. If you already keep a provenance file whose summary says exactly that, reuse it here. The skill does not need to repeat the knowledge, it needs to name it, the way a book cover tells you what is inside without being the book.
 
-**Second, the trigger.** When a model gets a task, it decides which skill to load by reading every skill's description and picking the one that matches. So the description is what makes your skill turn on at the right moment. Write it using the questions people actually ask, and do not invent them at your desk: mine them. Go back to the support threads and the channels where teammates ask for help, and borrow their words. Then strip out anything volatile. Internal limits, config values, and environment names all change, and a trigger that bakes them in goes stale with them. "Why did my bulk job stop partway" routes just as well as a version with our current batch limit hardcoded in it, and it will still route next quarter. Keep the symptom, drop the specifics. Then write the other half: a short "do not use this for" list, so your skill stays quiet when the question belongs to a neighboring skill. You will not guess every case up front. Ours grew one collision at a time: whenever the wrong skill fired on a question, another line went into the list, and the file got sharper with use.
+**Second, the trigger.** When a model gets a task, it decides which skill to load by reading every skill's description and picking the one that matches. So the description is what makes your skill turn on at the right moment. Write it using the questions people actually ask, and do not invent them at your desk: mine them. Go back to the support threads and the channels where teammates ask for help, and borrow their words. A real question like "why did only part of my batch go through" pulls the skill in every time. A vague category like "use this for bulk questions" misses half of them. And while you harvest, strip out anything volatile: internal limits, config values, and environment names all change, and a trigger that bakes them in goes stale on the next release. Keep the symptom, drop the specifics.
+
+Then write the other half: a short "do not use this for" list, so your skill stays quiet when the question belongs to a neighboring skill. You will not guess every case up front. Ours grew one collision at a time: whenever the wrong skill fired on a question, another line went into the list, and the file got sharper with use.
 
 **Third, the reading order.** The trained knowledge is not one big document. It is a set of small ones, each answering a different kind of question: what the concepts mean, what the standard way looks like, how the data is stored, which mistakes to avoid. The skill tells each reader where to start depending on what they came to do. Someone writing requirements gets pointed to one file first, someone designing the database to another. Nothing is hidden. It just saves everyone from reading everything to find the part they need.
 
@@ -41,8 +43,8 @@ description: >-
   many records in a single asynchronous request. Use when a task
   touches bulk orchestration: acting on many records at once, record
   locking, per-item status tracking, batch limits, partial success.
-  Trigger on: "bulk review", "select all", "why did my bulk job stop
-  partway", "why are these records locked".
+  Trigger on: "bulk review", "select all", "why did only part of my
+  batch go through", "why are these records locked".
   Do NOT use for: a single record's own content, the approval decision
   itself, generic filtering or sorting, user permissions.
 ---
