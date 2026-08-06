@@ -10,10 +10,12 @@ export const metadata = {
 export default function ContributorsPage() {
   const posts = getAllPosts();
 
-  // Dedupe authors by name, then sort alphabetically by last name
+  // Dedupe authors (including co-authors) by name, then sort alphabetically by last name
   const seen = new Set<string>();
+  const isByContributor = (p: (typeof posts)[number], name: string) =>
+    p.author.name === name || p.coAuthor?.name === name;
   const contributors = posts
-    .map((p) => p.author)
+    .flatMap((p) => (p.coAuthor ? [p.author, p.coAuthor] : [p.author]))
     .filter((a) => {
       if (seen.has(a.name)) return false;
       seen.add(a.name);
@@ -103,8 +105,8 @@ export default function ContributorsPage() {
                     paddingTop: "10px",
                   }}
                 >
-                  {posts.filter((p) => p.author.name === author.name).length}{" "}
-                  {posts.filter((p) => p.author.name === author.name).length === 1 ? "post" : "posts"}
+                  {posts.filter((p) => isByContributor(p, author.name)).length}{" "}
+                  {posts.filter((p) => isByContributor(p, author.name)).length === 1 ? "post" : "posts"}
                 </p>
               </Link>
             ))}

@@ -15,7 +15,7 @@ export default async function PostsPage({ searchParams }: Props) {
   const { author } = await searchParams;
   const allPosts = getAllPosts();
   const posts = author
-    ? allPosts.filter((p) => p.author.name === author)
+    ? allPosts.filter((p) => p.author.name === author || p.coAuthor?.name === author)
     : allPosts;
 
   return (
