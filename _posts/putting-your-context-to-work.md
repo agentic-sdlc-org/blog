@@ -17,7 +17,7 @@ There is a strangely quiet moment at the end of context training. If you followe
 
 And then you look at what you actually have. A folder. On your laptop. The most carefully curated body of knowledge your team owns, and its current deployment model is that people can ask *you* about it.
 
-Now imagine your version of that moment. The loop has run its course on one of your domains: context trained, references solid, evals green. And the result is inert. Knowledge that is true, current, and hard-won, sitting in a directory, doing nothing. We are not fully there ourselves yet (our bulk-actions equipment is still getting tweaks and training passes), but the question already stares at us every day. This post is about the other half of the job: the road from that folder to something your whole team, and your agents, actually run. The road has three stops, and the good news is that every one of them is short.
+Now imagine your version of that moment. The loop has run its course on one of your domains: context trained, references solid, evals green. And the result is inert. Knowledge that is true, current, and hard-won, sitting in a directory, doing nothing. This post is about the other half of the job: the road from that folder to something your whole team, and your agents, actually run. The road has three stops, and to keep things concrete we will walk them with the domain we are training right now: **bulk actions**, our standard for applying one decision across many records in a single asynchronous request. It is not a finished showcase (that equipment still gets tweaks and training passes every week), which makes it honest company for the trip.
 
 ## Stop one: give it a front door
 
@@ -27,9 +27,28 @@ The mistake to avoid here is treating that file as the knowledge. It is not. The
 
 **First, identity.** The file opens by saying what this knowledge is about and where it ends: the purpose of the domain, the main concepts and their vocabulary, and the boundaries of what it covers. If you already keep a provenance file whose summary says exactly that, reuse it here. The skill does not need to repeat the knowledge, it needs to name it, the way a book cover tells you what is inside without being the book.
 
-**Second, the trigger.** When a model gets a task, it decides which skill to load by reading every skill's description and picking the one that matches. So the description is what makes your skill turn on at the right moment. Write it using the real questions people ask ("why did my bulk job only process 250"), not vague categories ("use this for bulk questions"). The real question routes the request, the vague category misses it. Then write the other half: a short "do not use this for" list, so your skill stays quiet when the question belongs to a neighboring skill. You will not guess every case up front. When the wrong skill fires, you add the case to the list, and the file gets sharper with use.
+**Second, the trigger.** When a model gets a task, it decides which skill to load by reading every skill's description and picking the one that matches. So the description is what makes your skill turn on at the right moment. Write it using the questions people actually ask, and do not invent them at your desk: mine them. Go back to the support threads and the channels where teammates ask for help, and borrow their words. Then strip out anything volatile. Internal limits, config values, and environment names all change, and a trigger that bakes them in goes stale with them. "Why did my bulk job stop partway" routes just as well as a version with our current batch limit hardcoded in it, and it will still route next quarter. Keep the symptom, drop the specifics. Then write the other half: a short "do not use this for" list, so your skill stays quiet when the question belongs to a neighboring skill. You will not guess every case up front. Ours grew one collision at a time: whenever the wrong skill fired on a question, another line went into the list, and the file got sharper with use.
 
 **Third, the reading order.** The trained knowledge is not one big document. It is a set of small ones, each answering a different kind of question: what the concepts mean, what the standard way looks like, how the data is stored, which mistakes to avoid. The skill tells each reader where to start depending on what they came to do. Someone writing requirements gets pointed to one file first, someone designing the database to another. Nothing is hidden. It just saves everyone from reading everything to find the part they need.
+
+Here is the front door of our bulk-actions skill, trimmed for the post (the real one carries more triggers and the full reading-order table):
+
+```md
+---
+name: bulk-actions
+description: >-
+  Expert on our Bulk Actions standard: applying one decision across
+  many records in a single asynchronous request. Use when a task
+  touches bulk orchestration: acting on many records at once, record
+  locking, per-item status tracking, batch limits, partial success.
+  Trigger on: "bulk review", "select all", "why did my bulk job stop
+  partway", "why are these records locked".
+  Do NOT use for: a single record's own content, the approval decision
+  itself, generic filtering or sorting, user permissions.
+---
+```
+
+Everything below that frontmatter is the routing: who should read which reference first, and the few invariants nobody may ignore.
 
 Thin front door, heavy references behind it. That shape is the whole design.
 
@@ -47,13 +66,28 @@ The skill works on your machine. Your teammate wants it. Now what?
 
 There are really three ways to hand a skill to a team.
 
-**Direct.** Copy the folder, or have everyone clone the repo and point their sessions at it. It works on day one. By day thirty there are five copies in five states and nobody knows which one is current. Distribution by diffusion.
+**Direct.** Copy the folder, or have everyone clone the repo. This is more viable than it sounds: if the skills live under `.claude/skills/`, sessions discover them automatically, and for a simple project with a handful of skills it is honestly enough. The cost arrives with scale: no versioning, copies drift apart, and nobody knows which one is current.
 
 **MCP.** Stand up a server that serves the knowledge as tools. We do this for company coding standards, and for lookup-style knowledge it is great. But the skill's shape gets lost in translation: no progressive disclosure, no role routing, no front door. And you now operate a service, with hosting and auth to match.
 
 **Plugin.** Package everything (skills, agents, MCP servers, slash commands, hooks) into a plugin, list it in a marketplace, and everyone installs it from there. One artifact, versioned, discoverable, and the same in every session.
 
-We went with the plugin, and the reasoning fits in one sentence: it is the easiest to adopt and the most scalable. The marketplace side of it is deliberately boring, and that is a compliment. Adding our plugin definition to the company marketplace was a ten line entry: a name, a description, and a source pointing at the clubhouse repo. (The marketplace itself, how to stand one up and run it, deserves its own piece. Not today.)
+We went with the plugin. It is the easiest for the team to adopt, and for a complex project we think it is basically the only way to go: our knowledge base spans several domains, ships agents next to the skills, and serves more than one team, so the structure pays for itself. The marketplace side is deliberately boring, and that is a compliment. Here is our whole entry, with the names filed off:
+
+```json
+{
+  "name": "team-knowledge",
+  "description": "Domain knowledge skills and worker agents for our platform.",
+  "source": {
+    "source": "url",
+    "url": "https://git.example.com/yourco/knowledge-repo.git",
+    "ref": "main"
+  },
+  "category": "development"
+}
+```
+
+That is the entire write up: a name, a description, and a source pointing at the repo where the skills live. (The marketplace itself, how to stand one up and run it, deserves its own piece. Not today.)
 
 The detail that actually sold us is what happens on update. Our plugin is served by reference: the marketplace entry points at the repo, and the repo is the source of truth. So a skill update is a normal merge request. When it merges, you bump the plugin's version number (one line in the manifest, in the same MR), and that is the entire release. Installed copies compare their local version against the repo's, see there is something new, and refresh themselves. No separate artifact to build, no package to publish, no reinstall instructions to broadcast to the team.
 
@@ -63,7 +97,23 @@ Some work outgrows using the skill inside your own session. In practice there ar
 
 The first is isolation. You want a request to run clean: no residue from earlier calls, no accumulated conversation bending the answer, a fresh window that sees only the skill and the task. The second is parallelism. Some jobs want to be fanned out and run at the same time, not queued through one chat.
 
-Both of those want an agent, and here is the punchline we set up in [Agents vs Skills](/posts/agents-vs-skills): the upgrade is almost embarrassingly thin. A skill is packaged knowledge. An agent is a pulse (a context window and a loop) wrapped around it. So the wrapper is a few lines of markdown in an `agents/` folder. Ours looks like this: a name, a description that says what to delegate to it, and one frontmatter line, `skills: [bulk-actions]`. That line is the glue. Whenever the worker runs, the hub auto-loads. We rebuilt nothing. The knowledge, the references, the when-to and when-not-to were already there.
+Both of those want an agent, and here is the punchline we set up in [Agents vs Skills](/posts/agents-vs-skills): the upgrade is almost embarrassingly thin. A skill is packaged knowledge. An agent is a pulse (a context window and a loop) wrapped around it. So the wrapper is a few lines of markdown in an `agents/` folder. Here is our bulk-actions worker, essentially whole:
+
+```md
+---
+name: bulk-actions
+description: >-
+  Bulk-actions domain worker. Delegate to it any end to end unit of
+  bulk-actions work: turning a spec into a validated ticket,
+  implementing or reviewing a change, answering a hard "how does
+  bulk work here" question grounded in code.
+skills: [bulk-actions]
+---
+You are the bulk-actions worker. Load the skill, do the task you
+were handed as the domain expert, and return the result.
+```
+
+The `skills` line is the glue. Whenever the worker runs, the hub auto-loads. We rebuilt nothing. The knowledge, the references, the when-to and when-not-to were already there.
 
 Once the plugin ships both a bulk-actions skill and a bulk-actions agent, **how does an invoking agent know which to use?** The same way everything else routes: by description. The skill's description says load me when you need to *know* something about this domain. The agent's says delegate to me when you need this domain's work *done* end to end, in its own window. It is the pulse test from the last post, operationalized: pull the knowledge into your window, or hand the work to a pulse of its own. Write both descriptions with that split in mind and the router does the rest.
 
