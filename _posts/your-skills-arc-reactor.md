@@ -1,6 +1,6 @@
 ---
-title: "Your Skill's \"Arc Reactor\" - Context Packages"
-excerpt: "The skill definition is the suit — clever, showable, easy to copy. The reactor that actually powers it is the context behind it, and building that context is the real work. We call it Context Training."
+title: "Your Skill's or Agent's \"Arc Reactor\" - Context Packages"
+excerpt: "The skill definition — the clever instructions, the slick interface, the thing you can show off in a demo. But the suit is inert without the glowing core buried in its chest. For skills OR agents, that core is the context. We build **Context Packages** this is where we pack the applied intelligence."
 coverImage: "/assets/blog/your-skills-arc-reactor/cover.png"
 date: "2026-08-03T09:00:00.000Z"
 author:
