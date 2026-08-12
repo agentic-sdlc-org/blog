@@ -33,19 +33,9 @@ The review feedback was one line long: *saying it well usually means saying it b
 
 The fix has two parts.
 
-**Only the exceptional earn a coded entry.** The test for each source is simple: does it teach something about the feature that you can't learn anywhere else? Say your domain is payments. The spike that explains why retries are capped at one attempt (because a retry once double-charged a customer) earns its own ID: that scar shaped the feature, no other document explains it, and an agent that doesn't know it will "fix" the cap and reintroduce the bug. The design doc that carries the why of your idempotency keys earns one too. But the forty routine tickets that also mention payments (a misaligned button, a typo in an error message, a flaky test) teach nothing about what the feature *is*. They are activity, not knowledge, and listing each one by hand buys you a list that is stale by Friday.
+**Only the exceptional earn a coded entry.** The test for each source is simple: does it teach something about the feature that you can't learn anywhere else? Say your domain is payments. The spike that explains why retries are capped at one attempt (because a retry once double-charged a customer) earns its own ID: that scar shaped the feature, no other document explains it, and an agent that doesn't know it will "fix" the cap and reintroduce the bug. The design doc that carries the why of your idempotency keys earns one too. But the forty routine tickets that also mention payments (a misaligned button, a typo in an error message, a flaky test) teach nothing about what the feature *is*. They are activity, not knowledge, and they stay out of the manifest.
 
-So the routine members of a class don't get listed at all. They get a **set-level entry**: one ID whose URL is a query, expanded by the generator at read time. You curate the *filter* once, and the generator reads whatever the filter returns on the day it runs.
-
-> **INT-34 — Jira, the live defect set** *(set-level source)*
->
-> **url:** a saved JQL filter over the domain's open tickets.
->
-> **why:** whatever is open on the day the generator runs. It reads every match, comments included. A hand-kept list of tickets goes stale the moment someone files a new one. A filter never does.
->
-> **caveats:** the query matches on text, so treat it as a net, not as truth. It can pull in tickets that merely mention the feature, and it can miss relevant ones that were worded differently. The generator judges every match before using it. And when one ticket keeps showing up in the references, it has stopped being routine: promote it to its own coded entry, with commentary.
-
-That one entry replaced six hand-enumerated tickets, and it is the only kind of source entry that gets *fresher* over time instead of staler. The same pattern covers the domain's Slack feature channel: one entry, read at refresh time, treated as the lowest-durability class (a chat message is a decision only if a ticket, page, or code change followed it).
+The rule that falls out of this: **every entry is a human choice**. You pick the specific tickets, the specific pages, the specific entry points into the code, and each pick carries a line saying why it's there and where it lies. There are broader nets we're tempted by (open-ended Jira searches, the Slack firehose, meeting transcripts) but evaluating those is a piece for another day, and we're deliberately not training on them yet.
 
 **Some classes don't survive curation at all.** We dropped product discovery tickets (PMPs) as a source class entirely, including the one the whole vision was distilled from. The reason is what those tickets are for. PMPs and epics exist to break work down, not to introduce concepts: anything worth keeping from them is supposed to land in a PRD or a spec, and the intent they carry fades once the work moves on. So epics survive only as records of what was actually delivered, PMP keys survive only as plain tracking pointers that say where a decision lives, and the vision itself lost nothing, because the provenance summary is maintainer-authored and it lives there in your own words.
 
@@ -96,7 +86,7 @@ One habit to keep: re-run this test every time you change the generator's own in
 
 Part 1's loop stands: provenance, generation, training, regeneration. What running it added is three habits that keep the loop healthy as it spins:
 
-- **Curate what goes in.** Individual entries only for the sources that really shaped the feature, one query for the routine rest, and the nerve to drop a source class that isn't reliable.
+- **Curate what goes in.** Hand-picked entries only for the sources that really shaped the feature, and the nerve to drop a source class that isn't reliable.
 - **Keep what comes out small.** Every fact written in one place only, a size goal per file, and every run reporting what grew and why.
 - **Trust nothing that changes without a reason.** Unchanged sources mean zero diff, every changed line names its source, and the re-run test checks the checker.
 
