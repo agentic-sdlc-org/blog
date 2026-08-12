@@ -37,16 +37,13 @@ The fix has two parts.
 
 So the routine members of a class don't get listed at all. They get a **set-level entry**: one ID whose URL is a query, expanded by the generator at read time. You curate the *filter* once, and the generator reads whatever the filter returns on the day it runs.
 
-```md
-- INT-34 — Jira — the live bulk-action defect set (set-level source)
-  url: {{JQL filter over the domain's open tickets}}
-  why: whatever is open the day the generator runs — it reads every match,
-       comments included. The filter cannot go stale the way a hand-kept
-       list does.
-  caveats: JQL is a text match — it can catch strangers and miss the
-           mislabeled; judge each match. A ticket that becomes load-bearing
-           gets promoted to its own coded entry.
-```
+> **INT-34 — Jira, the live defect set** *(set-level source)*
+>
+> **url:** a saved JQL filter over the domain's open tickets.
+>
+> **why:** whatever is open on the day the generator runs. It reads every match, comments included. A hand-kept list of tickets goes stale the moment someone files a new one. A filter never does.
+>
+> **caveats:** the query matches on text, so treat it as a net, not as truth. It can pull in tickets that merely mention the feature, and it can miss relevant ones that were worded differently. The generator judges every match before using it. And when one ticket keeps showing up in the references, it has stopped being routine: promote it to its own coded entry, with commentary.
 
 That one entry replaced six hand-enumerated tickets, and it is the only kind of source entry that gets *fresher* over time instead of staler. The same pattern covers the domain's Slack feature channel: one entry, read at refresh time, treated as the lowest-durability class (a chat message is a decision only if a ticket, page, or code change followed it).
 
