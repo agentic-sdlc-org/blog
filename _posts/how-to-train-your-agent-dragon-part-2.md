@@ -47,9 +47,9 @@ So the routine members of a class don't get listed at all. They get a **set-leve
 
 That one entry replaced six hand-enumerated tickets, and it is the only kind of source entry that gets *fresher* over time instead of staler. The same pattern covers the domain's Slack feature channel: one entry, read at refresh time, treated as the lowest-durability class (a chat message is a decision only if a ticket, page, or code change followed it).
 
-**Some classes don't survive curation at all.** We dropped product discovery tickets (PMPs) as a source class entirely, including the one the whole vision was distilled from. That sounds like a loss until you notice what the provenance already contains: the summary section is maintainer-authored, so the vision those tickets carried lives on as your own words, which is where judgment belongs anyway. Ticket keys survive in the references only as plain tracking pointers, telling a reader where a decision lives without pretending the ticket is a reliable statement of fact.
+**Some classes don't survive curation at all.** We dropped product discovery tickets (PMPs) as a source class entirely, including the one the whole vision was distilled from. The reason is what those tickets are for. PMPs and epics exist to break work down, not to introduce concepts: anything worth keeping from them is supposed to land in a PRD or a spec, and the intent they carry fades once the work moves on. So epics survive only as records of what was actually delivered, PMP keys survive only as plain tracking pointers that say where a decision lives, and the vision itself lost nothing, because the provenance summary is maintainer-authored and it lives there in your own words.
 
-The manifest landed at **33 sources**, each with a reason to exist. The retired sixteen keep their IDs as one-line stubs, because IDs are permanent and old citations still need to resolve somewhere.
+The manifest landed at **33 sources**, each with a reason to exist.
 
 ## Standard 2 — References grow unless something pushes back
 
