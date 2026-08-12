@@ -12,14 +12,14 @@ ogImage:
 
 ## The loop met reality
 
+This post is what we learned by putting it into practice, end to end, on a domain with teeth: **bulk actions**, a feature spread across 15 GraphQL mutations, 4 repositories, and 3 generations of implementation.
+
 Part 1 gave you the loop:
 
 1. **Frame the provenance** 
 2. **Generate the references**
 3. **Train against the gaps**
 4. **Regenerate forever.**
-
-This post is what we learned by putting it into practice, end to end, on a domain with teeth: **bulk actions**, a feature spread across 15 GraphQL mutations, 4 repositories, and 3 generations of implementation.
 
 The loop worked. One regeneration caught documentation that was already lying (a cleanup job had been fixed weeks earlier and the old references still described the broken version). The training sessions turned 10 open questions into 3 real bug tickets, 2 recorded architecture decisions, and 1 doc contradiction settled by reading the code. That part of the story is Part 1, validated.
 
