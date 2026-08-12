@@ -58,7 +58,7 @@ Here is the measurement nobody wants to see. Our first full regeneration, readin
 The insight that fixed it: **getting bigger and getting contradictory are the same disease.** References grow mostly by repeating each other, and two copies of a fact eventually disagree, because one gets updated and the other doesn't. So the size rules and the consistency rules turn out to be one rule.
 
 - **Every fact is written down in one place only.** Each fact has a single reference that owns it. Any other file that needs that fact links to it instead of repeating it. The per-mutation matrix lives in `implementation`, the locking table in `standard-pattern`, the schema in `data-model`, and everyone else points there.
-- **A soft target per file** (~250 lines), with a justify-if-over rule. Not a hard cap: the file that is the designated home of a 15-by-8 matrix gets to be big, but it has to say so by name in the run report.
+- **Keep each file small** (we aim for ~250 lines). It's a goal, not a hard rule: some files are legitimately bigger, like the one that owns the giant table of every mutation and its behavior. But going over the target is never silent. The run report has to say which file went over and why.
 - **Tables over prose** for anything enumerable. Prose is for the why.
 - **Resolutions collapse.** A resolved question renders as one line and a pointer. The story of how it got resolved lives in the training transcripts, not the reference.
 - **Every run reports per-file size deltas.** Growth without a named reason is a defect of the run, not a neutral outcome.
