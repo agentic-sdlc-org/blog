@@ -12,7 +12,14 @@ ogImage:
 
 ## The loop met reality
 
-Part 1 gave you the loop: frame the provenance, generate the references, train against the gaps, regenerate forever. It read clean because it was written from the design. This post is what we learned by putting it into practice, end to end, on a domain with teeth: bulk actions, a feature spread across 15 GraphQL mutations, 4 repositories, and 3 generations of implementation that all still run in production.
+Part 1 gave you the loop:
+
+1. **Frame the provenance** 
+2. **Generate the references**
+3. **Train against the gaps**
+4. **Regenerate forever.**
+
+It read clean because it was written from the design. This post is what we learned by putting it into practice, end to end, on a domain with teeth: **bulk actions**, a feature spread across 15 GraphQL mutations, 4 repositories, and 3 generations of implementation.
 
 The loop worked. One regeneration caught documentation that was already lying (a cleanup job had been fixed weeks earlier and the old references still described the broken version). The training sessions turned 10 open questions into 3 real bug tickets, 2 recorded architecture decisions, and 1 doc contradiction settled by reading the code. That part of the story is Part 1, validated.
 
@@ -26,7 +33,9 @@ The review feedback was one line long: *saying it well usually means saying it b
 
 The fix has two parts.
 
-**Only the exceptional earn a coded entry.** A source gets its own ID when it settles something nothing else does: a rolled-back spike that explains a scar in the code, a defect the references cite constantly, a design doc that carries the why. Routine members of a class don't get listed. They get a **set-level entry**: one ID whose URL is a query, expanded by the generator at read time.
+**Only the exceptional earn a coded entry.** The test for each source is simple: does it teach something about the feature that you can't learn anywhere else? Say your domain is payments. The spike that explains why retries are capped at one attempt (because a retry once double-charged a customer) earns its own ID: that scar shaped the feature, no other document explains it, and an agent that doesn't know it will "fix" the cap and reintroduce the bug. The design doc that carries the why of your idempotency keys earns one too. But the forty routine tickets that also mention payments (a misaligned button, a typo in an error message, a flaky test) teach nothing about what the feature *is*. They are activity, not knowledge, and listing each one by hand buys you a list that is stale by Friday.
+
+So the routine members of a class don't get listed at all. They get a **set-level entry**: one ID whose URL is a query, expanded by the generator at read time. You curate the *filter* once, and the generator reads whatever the filter returns on the day it runs.
 
 ```md
 - INT-34 — Jira — the live bulk-action defect set (set-level source)
