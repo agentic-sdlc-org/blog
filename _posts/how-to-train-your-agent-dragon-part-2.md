@@ -1,5 +1,5 @@
 ---
-title: "How to Train Your (Agent) Dragon, Part 2: What Production Taught Us"
+title: "How to Train Your (Agent) Dragon, Part 2: What Running the Loop Taught Us"
 excerpt: "We ran the four-step loop from Part 1 on a real domain, end to end. Three standards came out of it that Part 1 didn't teach: sources need curation, references grow unless something pushes back, and a re-run on unchanged sources must change nothing. With the numbers to prove each one."
 coverImage: "/assets/blog/how-to-train-your-agent-dragon/cover.png"
 date: "2026-08-13T09:00:00.000Z"
@@ -12,11 +12,11 @@ ogImage:
 
 ## The loop met reality
 
-Part 1 gave you the loop: frame the provenance, generate the references, train against the gaps, regenerate forever. It read clean because it was written from the design. This post is what happened when we ran it for real, end to end, on a domain with teeth: bulk actions, a feature spread across 15 GraphQL mutations, 4 repositories, and 3 generations of implementation that all still run in production.
+Part 1 gave you the loop: frame the provenance, generate the references, train against the gaps, regenerate forever. It read clean because it was written from the design. This post is what we learned by putting it into practice, end to end, on a domain with teeth: bulk actions, a feature spread across 15 GraphQL mutations, 4 repositories, and 3 generations of implementation that all still run in production.
 
 The loop worked. One regeneration caught documentation that was already lying (a cleanup job had been fixed weeks earlier and the old references still described the broken version). The training sessions turned 10 open questions into 3 real bug tickets, 2 recorded architecture decisions, and 1 doc contradiction settled by reading the code. That part of the story is Part 1, validated.
 
-But running it also surfaced three problems Part 1 never mentions, because you only meet them at scale. Each one turned into a standard with a number behind it. That's what this post is: the three standards, why each exists, and the measurements that forced them.
+But putting the loop into practice also surfaced three problems Part 1 never mentions, because you only meet them when you actually run it. Each one turned into a standard with a number behind it. That's what this post is: the three standards, why each exists, and the measurements that forced them.
 
 ## Standard 1 — Curate your sources like you curate the summary
 
@@ -88,7 +88,7 @@ Run the re-run test once to calibrate, and then re-run it every time you change 
 
 ## The loop, revised
 
-Part 1's loop stands: provenance, generation, training, regeneration. What production added is a set of forces that keep the loop from silting up as it spins:
+Part 1's loop stands: provenance, generation, training, regeneration. What running it added is a set of forces that keep the loop from silting up as it spins:
 
 - **Curation pressure on the way in.** Coded entries for the exceptional, set-level queries for the routine, and the nerve to drop a source class that isn't reliable.
 - **Size pressure on the way out.** One home per fact, soft targets with named justifications, and size deltas in every run report.
