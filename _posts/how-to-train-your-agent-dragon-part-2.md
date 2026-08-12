@@ -65,12 +65,11 @@ The insight that fixed it: **getting bigger and getting contradictory are the sa
 
 Regenerating under those rules took the set from 3,433 to **2,797 lines (−19%)** with zero facts lost. Against the original baseline, the corrected knowledge now costs 11% more than the stale version did, instead of 36%.
 
-```
-                                   Lines            Words
-Before the full regeneration       2,526            24,528
-After it (no guardrails yet)       3,433 (+36%)     32,887 (+34%)
-After the shrink (guardrails on)   2,797            26,625
-```
+| | Lines | Words |
+|---|---|---|
+| Before the full regeneration | 2,526 | 24,528 |
+| After it (no guardrails yet) | 3,433 (+36%) | 32,887 (+34%) |
+| After the shrink (guardrails on) | 2,797 | 26,625 |
 
 ## Standard 3 — The re-run test
 
