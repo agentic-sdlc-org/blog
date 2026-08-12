@@ -55,9 +55,9 @@ The manifest landed at **33 sources**, each with a reason to exist. The retired 
 
 Here is the measurement nobody wants to see. Our first full regeneration, reading all 49 sources with fresh eyes, grew the reference set from **2,526 to 3,433 lines (+36%)**. Every single file grew. Some of that was real: corrected facts, a per-mutation matrix nobody had ever assembled. But a third more volume, uniformly, across every file, is not knowledge. It is a generator with nothing telling it to stop.
 
-The insight that fixed it: **bloat and contradiction are the same disease.** References grow mostly by restating each other, and two copies of a fact eventually disagree, because one gets updated and the other doesn't. So the size rules and the consistency rules turn out to be one rule.
+The insight that fixed it: **getting bigger and getting contradictory are the same disease.** References grow mostly by repeating each other, and two copies of a fact eventually disagree, because one gets updated and the other doesn't. So the size rules and the consistency rules turn out to be one rule.
 
-- **One primary home per fact.** Each fact lives in exactly one reference. Every other file that needs it links there instead of restating it. The per-mutation matrix lives in `implementation`, the locking table in `standard-pattern`, the schema in `data-model`, and everyone else points.
+- **Every fact is written down in one place only.** Each fact has a single reference that owns it. Any other file that needs that fact links to it instead of repeating it. The per-mutation matrix lives in `implementation`, the locking table in `standard-pattern`, the schema in `data-model`, and everyone else points there.
 - **A soft target per file** (~250 lines), with a justify-if-over rule. Not a hard cap: the file that is the designated home of a 15-by-8 matrix gets to be big, but it has to say so by name in the run report.
 - **Tables over prose** for anything enumerable. Prose is for the why.
 - **Resolutions collapse.** A resolved question renders as one line and a pointer. The story of how it got resolved lives in the training transcripts, not the reference.
@@ -97,7 +97,7 @@ Run the re-run test once to calibrate, and then re-run it every time you change 
 Part 1's loop stands: provenance, generation, training, regeneration. What running it added is a set of forces that keep the loop from silting up as it spins:
 
 - **Curation pressure on the way in.** Coded entries for the exceptional, set-level queries for the routine, and the nerve to drop a source class that isn't reliable.
-- **Size pressure on the way out.** One home per fact, soft targets with named justifications, and size deltas in every run report.
+- **Size pressure on the way out.** Every fact written down in one place only, soft targets with named justifications, and size deltas in every run report.
 - **The no-op invariant across runs.** Unchanged sources mean zero diff, every changed line traces to a named source, and the re-run test guards the guards.
 
 All three now live in the templates and the generator skill, so the next domain starts from them instead of rediscovering them. And one gap stays open on purpose: nothing watches the sources between runs yet. Today a refresh happens when a human triggers it. An agent that monitors the pinned sources and pulls the trigger when they move is the natural next piece of the pipeline, and probably the next post.
