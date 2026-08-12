@@ -65,41 +65,42 @@ The insight that fixed it: **getting bigger and getting contradictory are the sa
 
 Regenerating under those rules took the set from 3,433 to **2,797 lines (−19%)** with zero facts lost. Against the original baseline, the corrected knowledge now costs 11% more than the stale version did, instead of 36%.
 
-| | Lines | Words |
-|---|---|---|
-| Before the full regeneration | 2,526 | 24,528 |
-| After (no guardrails) | 3,433 (+36%) | 32,887 (+34%) |
-| After the shrink (guardrails on) | 2,797 | 26,625 |
+```
+                                   Lines            Words
+Before the full regeneration       2,526            24,528
+After it (no guardrails yet)       3,433 (+36%)     32,887 (+34%)
+After the shrink (guardrails on)   2,797            26,625
+```
 
 ## Standard 3 — The re-run test
 
 The sharpest question in the whole review was this one: *if you re-run the generator on the SAME sources, does it add anything? I'm guessing it does. That would be the test.*
 
-It is exactly the right test, because it isolates the failure mode that size targets alone can't catch: a generator that pads. If nothing changed in the world, a regeneration should change nothing in the references. Any line it adds on a no-op input came from the model, not from a source, and a line with no source behind it is exactly the kind of confident filler the whole loop exists to eliminate.
+It is the right test because it catches the one failure the size rules can't: a generator that adds things nobody asked for. The logic is simple. If nothing changed in the world, a regeneration should change nothing in the documents. Any new line on a run like that didn't come from a source. It came from the model, and that is exactly the confident filler this whole loop exists to eliminate.
 
-So we ran it. Full write pass over the same sources, the standard regeneration instructions, and one deliberate twist: the workers were not told it was a test, because telling them would bias the result. Output went to a separate directory and the diff was checked by the coordinator, not taken from the workers' own reports.
+So we ran it. Same sources, same instructions as any normal run, with one twist: the workers were not told it was a test, because telling them would bias the result. The output went to a separate folder, and the diff was checked independently instead of trusting the workers' own reports.
 
 **Result: 0 changed lines across all 11 references.**
 
-Honesty requires saying why it held, because the hypothesis (it adds) was right about the previous week's pipeline. The first full regeneration grew 36% precisely because nothing pushed back. Two instructions make the difference, and neither is magic:
+To be fair, the guess (that it adds) was right about the pipeline of a week earlier. That first run grew 36% because nothing pushed back. Two rules are what changed the outcome, and neither is magic:
 
-1. **A re-run edits, it doesn't rewrite.** The generator opens the existing reference and treats it as correct until a source proves otherwise. Its job is comparison, not composition. A writer asked to write the same essay twice will produce two essays. An editor with nothing to flag returns the document untouched.
-2. **Every changed line needs a named source behind it.** The last step of every run is a diff walk: each hunk must be attributable to a source that moved (a commit, an edited page, a ticket that changed, a new training transcript). A hunk with no source behind it gets reverted, no matter how much better it reads.
+1. **A re-run edits, it doesn't rewrite.** The generator opens the existing document and treats it as correct until a source proves otherwise. Its job is to compare, not to compose. Ask a writer to write the same essay twice and you get two essays. Give an editor nothing to flag and the document comes back untouched.
+2. **Every changed line must name the source that caused it.** The last step of every run is walking the diff: each change has to point at a source that moved (a commit, an edited page, a ticket, a new training transcript). A change with no source behind it gets reverted, no matter how much better it reads.
 
-Which raises the question we got next, and you will too: *how does it know a source changed? That's a pretty big database.*
+The natural follow-up question is: *how does it know a source changed? That sounds like a big database.*
 
-There is no database, and for non-repo sources there is no diff either. For code, the references record the exact commits they were verified against, so git answers precisely. For Confluence and Jira there is no stored snapshot of what a page said last run. The generator re-reads every source on every run and compares what it says now against what the references claim, claim by claim. Modified dates and ticket timestamps are hints for where to look first, not the mechanism. The attribution "database" is the citations themselves: every material claim in every reference carries its source ID inline, so when a diff line appears, its own citation names the source, and the run report says whether that source moved. The eval suite from Part 1 is the second net, re-checking claims against live sources between runs, for the day the world moves and nobody regenerates.
+There is no database. For code it's easy: the documents record the exact commits they were checked against, and git tells you what moved. For Confluence and Jira there is no snapshot of what a page said last time, so the generator simply re-reads every source on every run and compares what it says now against what the documents claim. How does it know what to compare? That's the citations: every claim in every document carries its source ID right next to it, so any changed line names its own source. And the eval suite from Part 1 is the safety net in between, re-checking claims against the live sources for the day the world moves and nobody regenerates.
 
-Run the re-run test once to calibrate, and then re-run it every time you change the generator's own instructions. Additive drift on a no-op input means the instructions regressed. It is a unit test for your knowledge pipeline.
+One habit to keep: re-run this test every time you change the generator's own instructions. If a no-op run starts adding again, you broke something. It is a unit test for your knowledge pipeline.
 
 ## The loop, revised
 
-Part 1's loop stands: provenance, generation, training, regeneration. What running it added is a set of forces that keep the loop from silting up as it spins:
+Part 1's loop stands: provenance, generation, training, regeneration. What running it added is three habits that keep the loop healthy as it spins:
 
-- **Curation pressure on the way in.** Coded entries for the exceptional, set-level queries for the routine, and the nerve to drop a source class that isn't reliable.
-- **Size pressure on the way out.** Every fact written down in one place only, soft targets with named justifications, and size deltas in every run report.
-- **The no-op invariant across runs.** Unchanged sources mean zero diff, every changed line traces to a named source, and the re-run test guards the guards.
+- **Curate what goes in.** Individual entries only for the sources that really shaped the feature, one query for the routine rest, and the nerve to drop a source class that isn't reliable.
+- **Keep what comes out small.** Every fact written in one place only, a size goal per file, and every run reporting what grew and why.
+- **Trust nothing that changes without a reason.** Unchanged sources mean zero diff, every changed line names its source, and the re-run test checks the checker.
 
-All three now live in the templates and the generator skill, so the next domain starts from them instead of rediscovering them. And one gap stays open on purpose: nothing watches the sources between runs yet. Today a refresh happens when a human triggers it. An agent that monitors the pinned sources and pulls the trigger when they move is the natural next piece of the pipeline, and probably the next post.
+All three now live in the templates and the generator, so the next domain starts from them instead of rediscovering them. One gap stays open on purpose: nothing watches the sources between runs yet. Today a refresh happens when a human triggers it. An agent that watches the sources and pulls the trigger when they move is the natural next piece, and probably the next post.
 
-Train the dragon once and it knows the territory. These three standards are how it stays lean enough to keep flying.
+Train the dragon once and it knows the territory. These three habits are how it stays lean enough to keep flying.
