@@ -81,7 +81,7 @@ So we ran it. Same sources, same instructions as any normal run, with one twist:
 
 **Result: 0 changed lines across all 11 references.**
 
-To be fair, the guess (that it adds) was right about the pipeline of a week earlier. That first run grew 36% because nothing pushed back. Two rules are what changed the outcome, and neither is magic:
+Two rules are what make it hold, and neither is magic:
 
 1. **A re-run edits, it doesn't rewrite.** The generator opens the existing document and treats it as correct until a source proves otherwise. Its job is to compare, not to compose. Ask a writer to write the same essay twice and you get two essays. Give an editor nothing to flag and the document comes back untouched.
 2. **Every changed line must name the source that caused it.** The last step of every run is walking the diff: each change has to point at a source that moved (a commit, an edited page, a ticket, a new training transcript). A change with no source behind it gets reverted, no matter how much better it reads.
