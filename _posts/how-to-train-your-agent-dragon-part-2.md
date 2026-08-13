@@ -3,9 +3,14 @@ title: "How to Train Your (Agent) Dragon, Part 2: What Running the Loop Taught U
 excerpt: "We ran the four-step loop from Part 1 on a real domain, end to end. Three standards came out of it that Part 1 didn't teach: sources need curation, references grow unless something pushes back, and a re-run on unchanged sources must change nothing. With the numbers to prove each one."
 coverImage: "/assets/blog/how-to-train-your-agent-dragon/cover.png"
 date: "2026-08-13T09:00:00.000Z"
+series: "How to Train Your (Agent) Dragon"
+part: 2
 author:
-  name: Jorge Romera & Marcus Tewksbury
+  name: Jorge Romera
   picture: "/assets/blog/authors/jorge.jpeg"
+coAuthor:
+  name: Marcus Tewksbury
+  picture: "/assets/blog/authors/marcus.jpeg"
 ogImage:
   url: "/assets/blog/how-to-train-your-agent-dragon/cover.png"
 ---

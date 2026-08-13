@@ -13,5 +13,7 @@ export type Post = {
   };
   content: string;
   preview?: boolean;
+  series?: string;
+  part?: number;
   republishedAt?: { label: string; url: string }[];
 };

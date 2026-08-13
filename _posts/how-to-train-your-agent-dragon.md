@@ -3,6 +3,8 @@ title: "How to Train Your (Agent) Dragon"
 excerpt: "Agents rarely fail because they're dim — they fail because they're handed sprawling, contradictory, half-stale context and asked to guess which parts still matter. Here's a loop that fixes that: provenance, generation, training, and regeneration, forever."
 coverImage: "/assets/blog/how-to-train-your-agent-dragon/cover.png"
 date: "2026-08-03T09:00:00.000Z"
+series: "How to Train Your (Agent) Dragon"
+part: 1
 author:
   name: Marcus Tewksbury
   picture: "/assets/blog/authors/marcus.jpeg"

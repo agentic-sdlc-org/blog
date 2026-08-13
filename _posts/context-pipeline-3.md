@@ -3,6 +3,8 @@ title: "Context Debt Is the New Technical Debt"
 excerpt: "Every engineering organization runs two decision systems. The official one and the real one. Agents don't bridge that gap — they execute against it."
 coverImage: "/assets/blog/context-pipeline-3/cover.png"
 date: "2026-06-30T11:00:00.000Z"
+series: "The Context Pipeline"
+part: 3
 author:
   name: Marcus Tewksbury
   picture: "/assets/blog/authors/marcus.jpeg"

@@ -3,6 +3,8 @@ title: "The Context Pipeline"
 excerpt: "\"Better documentation\" is not a strategy. It's a slogan that summons templates, compliance checklists, and a stale wiki nobody trusts. CTOs need a sharper model — a working system, not a vibe."
 coverImage: "/assets/blog/context-pipeline-2/cover.png"
 date: "2026-06-30T10:00:00.000Z"
+series: "The Context Pipeline"
+part: 2
 author:
   name: Marcus Tewksbury
   picture: "/assets/blog/authors/marcus.jpeg"

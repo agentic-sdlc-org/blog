@@ -3,6 +3,8 @@ title: "Your Code Is Only as Good as Your Context"
 excerpt: "The next phase of engineering productivity won't be won by the team with the cleverest prompts or the biggest AI tooling budget. It will be won by the team with the best context feeding the system."
 coverImage: "/assets/blog/context-pipeline/cover.png"
 date: "2026-06-30T09:00:00.000Z"
+series: "The Context Pipeline"
+part: 1
 author:
   name: Marcus Tewksbury
   picture: "/assets/blog/authors/marcus.jpeg"

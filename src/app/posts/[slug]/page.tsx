@@ -7,6 +7,7 @@ import Header from "@/app/_components/header";
 import { PostBody } from "@/app/_components/post-body";
 import { PostHeader } from "@/app/_components/post-header";
 import { PostViewTracker } from "@/app/_components/post-view-tracker";
+import { SeriesNav } from "@/app/_components/series-nav";
 
 export default async function Post(props: Params) {
   const params = await props.params;
@@ -37,6 +38,13 @@ export default async function Post(props: Params) {
             republishedAt={post.republishedAt}
           />
           <PostBody content={content} />
+          {post.series && (
+            <SeriesNav
+              series={post.series}
+              currentSlug={post.slug}
+              posts={getAllPosts()}
+            />
+          )}
         </article>
       </Container>
     </main>
