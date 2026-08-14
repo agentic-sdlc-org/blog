@@ -20,6 +20,8 @@ That system is the Context Pipeline: the chain of artifacts that turns business 
 
 **PRD → Specification → Architecture Plan → Epic → User Story → Ticket.**
 
+> **Update:** Since this was written, the pipeline grew a new step 0. Vibe-coding platforms let product teams prototype a feature into existence *before* the PRD, and a new artifact — the *component manifest* — captures that prototype's structure so engineering can build from it. It sits to the left of the PRD in the artifact flow. See [The Component Manifest](/posts/component-manifest).
+
 Each layer should make the next one more precise. The PRD establishes why the work matters. The Specification defines what the system must do. The Architecture Plan defines how the system should change. Stories express valuable slices of behavior. Tickets define executable units.
 
 The order isn't strictly linear — a Spec can expose a gap in the PRD, an Architecture Plan can reshape an Epic. That's normal. What matters is the principle underneath: progressive clarification. Each layer should reduce ambiguity, not just relabel it. When the pipeline works, every document narrows the range of reasonable interpretations. When it fails, every document passes its ambiguity downstream for someone — or some agent — to resolve. That downstream guessing is where agentic development gets expensive.
