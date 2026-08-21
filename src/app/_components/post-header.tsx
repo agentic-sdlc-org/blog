@@ -70,7 +70,7 @@ export function PostHeader({ title, coverImage, date, author, coAuthor, republis
         </div>
 
         {/* Right: title + date + republish logos */}
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <h1
             className="text-4xl md:text-5xl font-normal leading-tight mb-3"
             style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-ink)' }}
