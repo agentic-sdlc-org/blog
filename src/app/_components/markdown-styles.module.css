@@ -3,6 +3,7 @@
   font-size: 1.0625rem;
   line-height: 1.75;
   color: var(--color-body);
+  overflow-wrap: break-word;
 }
 
 .markdown p,
@@ -56,11 +57,16 @@
   margin: 2.5rem 0;
 }
 
+.markdown [data-table-wrap] {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
 .markdown table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
   font-size: 0.9375rem;
   line-height: 1.5;
 }
@@ -128,4 +134,20 @@
   background: color-mix(in srgb, var(--color-border) 30%, transparent);
   border-radius: 4px;
   padding: 0.125rem 0.375rem;
+}
+
+/*
+ * Below this width the columns get too narrow to read, so hold the table at a
+ * legible width and let [data-table-wrap] scroll it. Must stay after the base
+ * th/td rules — same specificity, so source order decides.
+ */
+@media (max-width: 40rem) {
+  .markdown table {
+    min-width: 32rem;
+  }
+
+  .markdown th,
+  .markdown td {
+    padding: 0.5rem 0.625rem;
+  }
 }
