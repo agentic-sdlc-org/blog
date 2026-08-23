@@ -2,7 +2,7 @@
 title: "The Attribution Layer"
 excerpt: "Seats, tokens, and acceptance rates all rise as adoption rises and never fall when quality does. The measurement that tells you whether an agentic SDLC is working starts somewhere less glamorous: knowing which changes the agents actually made."
 coverImage: "/assets/blog/attribution-layer/cover.png"
-date: "2026-09-02T09:00:00.000Z"
+date: "2026-08-23T09:00:00.000Z"
 author:
   name: Tom Elrod
   picture: "/assets/blog/authors/tom.jpeg"
