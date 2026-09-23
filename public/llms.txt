@@ -12,6 +12,8 @@ Agentic-SDLC.org documents one organization's real-world journey redefining soft
 
 ## Posts
 
+- [The Spec Was Perfect. The Data Disagreed.](https://agentic-sdlc.org/posts/the-spec-was-perfect) — Why data specifications need their premises verified against live warehouse data before implementation.
+
 - [Your Code Is Only as Good as Your Context](https://agentic-sdlc.org/posts/context-pipeline) — Part 1 of 3: Context Pipeline. The next phase of engineering productivity will be won by the team with the best context feeding the system. Documentation stops being overhead and becomes part of the engineering execution system itself.
 
 - [The Context Pipeline](https://agentic-sdlc.org/posts/context-pipeline-2) — Part 2 of 3: Context Pipeline. The chain of artifacts that turns business intent into executable work: PRD → Specification → Architecture Plan → Epic → User Story → Ticket. What each layer's job is, and what good looks like.
