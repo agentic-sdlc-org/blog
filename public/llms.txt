@@ -12,6 +12,8 @@ Agentic-SDLC.org documents one organization's real-world journey redefining soft
 
 ## Posts
 
+- [The Ghost in the Machine: Why We Build a Harness Around Our Coding Agents](https://agentic-sdlc.org/posts/ghost-in-the-machine) — Code says what shipped; the harness says what we meant. How curated, versioned knowledge packages give coding agents intention, judgment, shortcuts and managed context.
+
 - [The Spec Was Perfect. The Data Disagreed.](https://agentic-sdlc.org/posts/the-spec-was-perfect) — Why data specifications need their premises verified against live warehouse data before implementation.
 
 - [Your Code Is Only as Good as Your Context](https://agentic-sdlc.org/posts/context-pipeline) — Part 1 of 3: Context Pipeline. The next phase of engineering productivity will be won by the team with the best context feeding the system. Documentation stops being overhead and becomes part of the engineering execution system itself.

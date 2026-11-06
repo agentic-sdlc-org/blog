@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Package generation: from sources to what agents read</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5eead4"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="600" fill="#0f1729"/>
+
+  <text x="60" y="58" fill="#5eead4" font-size="15" letter-spacing="3" font-weight="600">PACKAGE GENERATION</text>
+  <text x="60" y="88" fill="#cbd5e1" font-size="18">From sources to what agents read</text>
+
+  <!-- Column headers -->
+  <g font-size="13" letter-spacing="2" font-weight="600" fill="#94a3b8">
+    <text x="60" y="140">SOURCES</text>
+    <text x="330" y="140">HUMANS CURATE</text>
+    <text x="650" y="140">GENERATORS BUILD</text>
+    <text x="930" y="140">AGENTS READ</text>
+  </g>
+
+  <!-- Sources -->
+  <g font-size="16" fill="#e2e8f0">
+    <rect x="60" y="160" width="210" height="56" rx="10" fill="#18233a" stroke="#334155"/>
+    <text x="80" y="194">Code on main</text>
+    <rect x="60" y="232" width="210" height="56" rx="10" fill="#18233a" stroke="#334155"/>
+    <text x="80" y="266">Docs and tickets</text>
+    <rect x="60" y="304" width="210" height="56" rx="10" fill="#18233a" stroke="#334155"/>
+    <text x="80" y="338">Slack and calls</text>
+  </g>
+  <rect x="60" y="392" width="210" height="64" rx="10" fill="none" stroke="#5eead4" stroke-dasharray="5 5"/>
+  <text x="80" y="420" fill="#5eead4" font-size="15" font-weight="600">Miners</text>
+  <text x="80" y="442" fill="#94a3b8" font-size="13">propose new material</text>
+
+  <!-- Humans curate -->
+  <g font-size="16" fill="#e2e8f0">
+    <rect x="330" y="160" width="270" height="56" rx="10" fill="#1e2a44" stroke="#8b7ad8"/>
+    <text x="350" y="186" font-weight="600">provenance.md</text>
+    <text x="350" y="206" font-size="13" fill="#94a3b8">vision, framing, why + caveats</text>
+    <rect x="330" y="232" width="270" height="56" rx="10" fill="#1e2a44" stroke="#8b7ad8"/>
+    <text x="350" y="258" font-weight="600">memory/</text>
+    <text x="350" y="278" font-size="13" fill="#94a3b8">transcripts, Slack syntheses</text>
+    <rect x="330" y="304" width="270" height="56" rx="10" fill="#1e2a44" stroke="#8b7ad8"/>
+    <text x="350" y="330" font-weight="600">references/</text>
+    <text x="350" y="350" font-size="13" fill="#94a3b8">canon, precedence ladder</text>
+    <rect x="330" y="376" width="270" height="56" rx="10" fill="#1e2a44" stroke="#8b7ad8"/>
+    <text x="350" y="402" font-weight="600">open-questions → decisions</text>
+    <text x="350" y="422" font-size="13" fill="#94a3b8">what a human ruled, and why</text>
+  </g>
+  <rect x="330" y="456" width="270" height="56" rx="10" fill="none" stroke="#5eead4" stroke-dasharray="5 5"/>
+  <text x="350" y="482" fill="#5eead4" font-size="15" font-weight="600">Trainer sessions</text>
+  <text x="350" y="502" fill="#94a3b8" font-size="13">answer open questions</text>
+
+  <!-- Generators -->
+  <rect x="650" y="232" width="220" height="128" rx="12" fill="#13302f" stroke="#5eead4"/>
+  <text x="670" y="270" fill="#e2e8f0" font-size="17" font-weight="600">Generators</text>
+  <text x="670" y="296" fill="#94a3b8" font-size="13">apply the precedence ladder</text>
+  <text x="670" y="316" fill="#94a3b8" font-size="13">rebuild what moved</text>
+  <text x="670" y="336" fill="#94a3b8" font-size="13">full rebuild every 90 days</text>
+
+  <!-- Agents read -->
+  <g font-size="16" fill="#e2e8f0">
+    <rect x="930" y="196" width="220" height="64" rx="10" fill="#18233a" stroke="#5eead4"/>
+    <text x="950" y="224" font-weight="600">SKILL.md</text>
+    <text x="950" y="245" font-size="13" fill="#94a3b8">router: which file, which task</text>
+    <rect x="930" y="276" width="220" height="64" rx="10" fill="#18233a" stroke="#5eead4"/>
+    <text x="950" y="304" font-weight="600">knowledge/</text>
+    <text x="950" y="325" font-size="13" fill="#94a3b8">or understanding/ for projects</text>
+    <rect x="930" y="372" width="220" height="64" rx="10" fill="#18233a" stroke="#5eead4"/>
+    <text x="950" y="400" font-weight="600">decisions.md</text>
+    <text x="950" y="421" font-size="13" fill="#94a3b8">the final word on intent</text>
+  </g>
+
+  <!-- Arrows -->
+  <g stroke="#5eead4" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <path d="M270 260 L322 260"/>
+    <path d="M165 392 L165 372"/>
+    <path d="M465 456 L465 440"/>
+    <path d="M600 296 L642 296"/>
+    <path d="M870 270 L922 236"/>
+    <path d="M870 300 L922 306"/>
+  </g>
+  <path d="M600 404 L922 404" stroke="#5eead4" stroke-width="2" stroke-dasharray="6 5" fill="none" marker-end="url(#arrow)"/>
+  <text x="650" y="396" fill="#94a3b8" font-size="13">SKILL.md points here directly</text>
+
+  <text x="60" y="560" fill="#94a3b8" font-size="15">Humans write the inputs. Agents read only the outputs. A correction goes upstream, and the next rebuild carries it.</text>
+</svg>
